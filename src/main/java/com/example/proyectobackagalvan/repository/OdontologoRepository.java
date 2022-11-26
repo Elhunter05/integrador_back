@@ -8,7 +8,7 @@ import java.util.Optional;
 @Repository
 public interface OdontologoRepository extends JpaRepository<Odontologo, Long> {
 
-//    @Query("SELECT o FROM Odontologos o WHERE o.matricula=?1")
     Optional<Odontologo> findByMatricula(Integer matricula);
+    Optional<Odontologo> findByNombreAndApellido(String nombre, String apellido);
 
 }

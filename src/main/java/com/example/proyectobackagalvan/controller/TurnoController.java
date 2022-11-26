@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/turnos")
+@CrossOrigin("*")
 public class TurnoController {
-    private TurnoService turnoService;
-    private PacienteService pacienteService;
-    private OdontologoService odontologoService;
+    private final TurnoService turnoService;
+    private final PacienteService pacienteService;
+    private final OdontologoService odontologoService;
 
     @Autowired
     public TurnoController(TurnoService turnoService, PacienteService pacienteService, OdontologoService odontologoService) {
@@ -39,6 +41,32 @@ public class TurnoController {
             response = ResponseEntity.notFound().build();
         }
         return response;
+    }
+
+    @GetMapping("/buscar-odontologo/{id}")
+    public ResponseEntity<Set<Turno>> buscarPorOdontologo(@PathVariable Long id) {
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(id);
+
+        if(odontologoBuscado.isPresent()) {
+            Optional<Set<Turno>> turnosOdontologo = turnoService.buscarTurnosPorOdontologo(odontologoBuscado.get());
+            if (turnosOdontologo.isPresent()) {
+                return ResponseEntity.ok(turnosOdontologo.get());
+            }
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/buscar-paciente/{id}")
+    public ResponseEntity<Set<Turno>> buscarPorPaciente(@PathVariable Long id) {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(id);
+
+        if(pacienteBuscado.isPresent()) {
+            Optional<Set<Turno>> turnosPaciente = turnoService.buscarTurnosPorPaciente(pacienteBuscado.get());
+            if (turnosPaciente.isPresent()) {
+                return ResponseEntity.ok(turnosPaciente.get());
+            }
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping

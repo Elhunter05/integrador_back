@@ -3,18 +3,21 @@ package com.example.proyectobackagalvan.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Domicilios")
+@Table(name = "domicilios")
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String calle;
+    @Column(nullable = false)
     private Integer numero;
+    @Column(nullable = false)
     private String localidad;
+    @Column(nullable = false)
     private String provincia;
 
-    public Domicilio() {
-    }
+    public Domicilio() {}
 
     public Domicilio(String calle, Integer numero, String localidad, String provincia) {
         this.calle = calle;
@@ -23,8 +26,20 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
+    public Domicilio(Long id, String calle, Integer numero, String localidad, String provincia) {
+        this.id = id;
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCalle() {
@@ -57,5 +72,16 @@ public class Domicilio {
 
     public void setProvincia(String provincia) {
         this.provincia = provincia;
+    }
+
+    @Override
+    public String toString() {
+        return "Domicilio{" +
+                "id=" + id +
+                ", calle='" + calle + '\'' +
+                ", numero=" + numero +
+                ", localidad='" + localidad + '\'' +
+                ", provincia='" + provincia + '\'' +
+                '}';
     }
 }

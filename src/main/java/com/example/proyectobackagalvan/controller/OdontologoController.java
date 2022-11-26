@@ -2,7 +2,6 @@ package com.example.proyectobackagalvan.controller;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.service.OdontologoService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +11,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/odontologos")
+@CrossOrigin("*")
 public class OdontologoController {
-    private OdontologoService odontologoService;
+    private final OdontologoService odontologoService;
 
     @Autowired
     public OdontologoController(OdontologoService odontologoService) {
@@ -23,6 +23,20 @@ public class OdontologoController {
     @GetMapping("/buscar")
     public ResponseEntity<Odontologo> buscarOdontologo(@RequestParam Long id) {
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(id);
+        ResponseEntity<Odontologo> response;
+
+        if (odontologoBuscado.isPresent()) {
+            response = ResponseEntity.ok(odontologoBuscado.get());
+        } else {
+            response = ResponseEntity.notFound().build();
+        }
+        return response;
+    }
+
+    @GetMapping("/buscar-nombre-completo")
+    public ResponseEntity<Odontologo> buscarOdontologoByNombreCompleto(@RequestParam String nombre, String apellido) {
+
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologoPorNombreCompleto(nombre, apellido);
         ResponseEntity<Odontologo> response;
 
         if (odontologoBuscado.isPresent()) {

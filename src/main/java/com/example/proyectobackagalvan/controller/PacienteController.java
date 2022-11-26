@@ -1,6 +1,5 @@
 package com.example.proyectobackagalvan.controller;
 
-import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/pacientes")
+@CrossOrigin("*")
 public class PacienteController {
-    private PacienteService pacienteService;
+    private final PacienteService pacienteService;
 
     @Autowired
     public PacienteController(PacienteService pacienteService) {
@@ -23,6 +23,19 @@ public class PacienteController {
     @GetMapping("/buscar-id/{id}")
     public ResponseEntity<Paciente> buscarPacienteById(@PathVariable("id") Long id) {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(id);
+        ResponseEntity<Paciente> response;
+
+        if (pacienteBuscado.isPresent()) {
+            response = ResponseEntity.ok(pacienteBuscado.get());
+        } else {
+            response = ResponseEntity.notFound().build();
+        }
+        return response;
+    }
+
+    @GetMapping("/buscar-nombre-completo/{nombre}&&{apellido}")
+    public ResponseEntity<Paciente> buscarPacienteByNombreCompleto(@PathVariable(name = "nombre") String nombre, @PathVariable(name = "apellido") String apellido) {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPacientePorNombreCompleto(nombre, apellido);
         ResponseEntity<Paciente> response;
 
         if (pacienteBuscado.isPresent()) {

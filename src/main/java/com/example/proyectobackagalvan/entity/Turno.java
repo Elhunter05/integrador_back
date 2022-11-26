@@ -4,30 +4,45 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Turnos")
+@Table(name = "turnos")
 public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+
     @ManyToOne
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
+
+    @Column(nullable = false)
     private LocalDate fecha;
 
     public Turno() {
     }
 
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-        this.fecha = fecha;
-    }
+//    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+//        this.paciente = paciente;
+//        this.odontologo = odontologo;
+//        this.fecha = fecha;
+//    }
+//
+//    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+//        this.id = id;
+//        this.paciente = paciente;
+//        this.odontologo = odontologo;
+//        this.fecha = fecha;
+//    }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Odontologo getOdontologo() {
