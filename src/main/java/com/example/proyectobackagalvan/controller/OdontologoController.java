@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/odontologos")
+@RequestMapping("/api/odontologos")
 @CrossOrigin("*")
 public class OdontologoController {
     private final OdontologoService odontologoService;

@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/turnos")
+@RequestMapping("/api/turnos")
 @CrossOrigin("*")
 public class TurnoController {
     private final TurnoService turnoService;
