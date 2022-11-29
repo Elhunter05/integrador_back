@@ -20,4 +20,14 @@ public class Domicilio {
     private String localidad;
     @Column(nullable = false)
     private String provincia;
+
+    public Domicilio() {
+    }
+
+    public Domicilio(String calle, Integer numero, String localidad, String provincia) {
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
 }

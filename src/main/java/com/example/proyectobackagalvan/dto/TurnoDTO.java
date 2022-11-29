@@ -1,5 +1,7 @@
-package com.example.proyectobackagalvan.entity;
+package com.example.proyectobackagalvan.dto;
 
+import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.entity.Paciente;
 import lombok.Getter;
 import lombok.Setter;
 

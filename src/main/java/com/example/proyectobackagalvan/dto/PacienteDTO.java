@@ -1,4 +1,4 @@
-package com.example.proyectobackagalvan.entity;
+package com.example.proyectobackagalvan.dto;
 
 import lombok.Getter;
 import lombok.Setter;
