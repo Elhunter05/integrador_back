@@ -1,6 +1,6 @@
 package com.example.proyectobackagalvan.controller;
 
-import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.dto.PacienteDTO;
 import com.example.proyectobackagalvan.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +21,14 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<PacienteDTO> guardarPaciente(@RequestBody PacienteDTO paciente) {
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
 
     @GetMapping("/buscar-id/{id}")
-    public ResponseEntity<Paciente> buscarPorId(@PathVariable("id") Long id) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
-        ResponseEntity<Paciente> response;
+    public ResponseEntity<PacienteDTO> buscarPorId(@PathVariable("id") Long id) {
+        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPaciente(id);
+        ResponseEntity<PacienteDTO> response;
 
         response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         return response;
@@ -42,9 +42,9 @@ public class PacienteController {
     }
 
     @GetMapping("/buscar-nombre-completo/{nombre}-{apellido}")
-    public ResponseEntity<Paciente> buscarPorNombreYApellido(@PathVariable(name = "nombre") String nombre, @PathVariable(name = "apellido") String apellido) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorNombreYApellido(nombre, apellido);
-        ResponseEntity<Paciente> response;
+    public ResponseEntity<PacienteDTO> buscarPorNombreYApellido(@PathVariable(name = "nombre") String nombre, @PathVariable(name = "apellido") String apellido) {
+        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPorNombreYApellido(nombre, apellido);
+        ResponseEntity<PacienteDTO> response;
 
         response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         return response;
@@ -58,9 +58,9 @@ public class PacienteController {
     }
 
     @GetMapping("/buscar-email/{email}")
-    public ResponseEntity<Paciente> buscarPorEmail(@PathVariable("email") String email) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorEmail(email);
-        ResponseEntity<Paciente> response;
+    public ResponseEntity<PacienteDTO> buscarPorEmail(@PathVariable("email") String email) {
+        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPorEmail(email);
+        ResponseEntity<PacienteDTO> response;
 
         response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         return response;
@@ -74,13 +74,13 @@ public class PacienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Paciente>> mostrarPacientes() {
+    public ResponseEntity<List<PacienteDTO>> mostrarPacientes() {
         return ResponseEntity.ok(pacienteService.mostrarPacientes());
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(paciente.getId());
+    public ResponseEntity<String> actualizarPaciente(@RequestBody PacienteDTO paciente){
+        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPaciente(paciente.getId());
         ResponseEntity<String> response;
 
         if (pacienteBuscado.isPresent()) {
@@ -94,7 +94,7 @@ public class PacienteController {
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
+        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPaciente(id);
         ResponseEntity<String> response;
 
         if (pacienteBuscado.isPresent()) {

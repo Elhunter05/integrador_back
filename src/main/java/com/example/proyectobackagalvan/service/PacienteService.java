@@ -1,25 +1,118 @@
 package com.example.proyectobackagalvan.service;
 
+import com.example.proyectobackagalvan.dto.PacienteDTO;
+import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.entity.Turno;
 import com.example.proyectobackagalvan.repository.PacienteRepository;
+import com.example.proyectobackagalvan.repository.TurnoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PacienteService implements IPacienteService {
     private final PacienteRepository pacienteRepository;
+    private final TurnoRepository turnoRepository;
+    private final ObjectMapper mapper;
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository) { this.pacienteRepository = pacienteRepository; }
-    public Paciente guardarPaciente (Paciente paciente) { return pacienteRepository.save(paciente); }
-    public Optional<Paciente> buscarPorId(Long id) { return pacienteRepository.findById(id); }
-    public Optional<Paciente> buscarPorNombreYApellido(String nombre, String apellido) { return pacienteRepository.findByNombreAndApellido(nombre, apellido); }
-    public Optional<Paciente> buscarPorEmail(String email) { return pacienteRepository.findByEmail(email); }
-    public List<Paciente> mostrarPacientes() { return pacienteRepository.findAll(); }
-    public void actualizarPaciente(Paciente paciente) { pacienteRepository.save(paciente); }
+    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper) {
+        this.pacienteRepository = pacienteRepository;
+        this.turnoRepository = turnoRepository;
+        this.mapper = mapper;
+    }
+
+
+
+    // Loguear cada método en los service
+
+
+
+    private PacienteDTO pacienteAPacienteDTO(Paciente paciente) {
+        PacienteDTO respuesta = new PacienteDTO();
+        respuesta.setId(paciente.getId());
+        respuesta.setNombre(paciente.getNombre());
+        respuesta.setApellido(paciente.getApellido());
+        respuesta.setDni(paciente.getDni());
+        respuesta.setEmail(paciente.getEmail());
+        respuesta.setFechaIngreso(paciente.getFechaIngreso());
+        respuesta.setDomicilioId(paciente.getDomicilio().getId());
+
+        Set<Turno> turnoSet = paciente.getTurnoSet();
+        List<Long> turnoIdList = new ArrayList<>();
+
+        for (Turno turno: turnoSet) {
+            turnoIdList.add(turno.getId());
+        }
+
+        return respuesta;
+    }
+
+    private Paciente pacienteDTOaPaciente(PacienteDTO pacienteDTO) {
+        Paciente paciente = new Paciente();
+
+        Domicilio domicilio = new Domicilio();
+        domicilio.setId(pacienteDTO.getDomicilioId());
+
+        List<Long> turnoIdList = pacienteDTO.getTurnoIdList();
+        Set<Turno> turnoSet = new HashSet<>();
+
+        // Acá iría un for o algo para meter turnos en turnoSet usando turnoIdList, pero no sé cómo conseguir el turno
+
+        paciente.setId(pacienteDTO.getId());
+        paciente.setNombre(pacienteDTO.getNombre());
+        paciente.setApellido(pacienteDTO.getApellido());
+        paciente.setDni(pacienteDTO.getDni());
+        paciente.setEmail(pacienteDTO.getEmail());
+        paciente.setFechaIngreso(pacienteDTO.getFechaIngreso());
+        paciente.setDomicilio(domicilio);
+
+        return paciente;
+    }
+
+    public PacienteDTO guardarPaciente (PacienteDTO paciente) {
+        Paciente pacienteAGuardar = pacienteDTOaPaciente(paciente);
+        Paciente pacienteGuardado = pacienteRepository.save(pacienteAGuardar);
+        return pacienteAPacienteDTO(pacienteGuardado);
+    }
+    public Optional<PacienteDTO> buscarPaciente(Long id) {
+        Optional<Paciente> pacienteBuscado = pacienteRepository.findById(id);
+        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+    }
+    public Optional<PacienteDTO> buscarPorNombreYApellido(String nombre, String apellido) {
+        Optional<Paciente> pacienteBuscado = pacienteRepository.findByNombreAndApellido(nombre, apellido);
+        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+    }
+    public Optional<PacienteDTO> buscarPorEmail(String email) {
+        Optional<Paciente> pacienteBuscado = pacienteRepository.findByEmail(email);
+        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+    }
+    public List<PacienteDTO> mostrarPacientes() {
+        List<Paciente> pacientesEncontrados = pacienteRepository.findAll();
+        List<PacienteDTO> respuesta = new ArrayList<>();
+        for (Paciente p: pacientesEncontrados) {
+            respuesta.add(pacienteAPacienteDTO(p));
+        }
+        return respuesta;
+    }
+    public void actualizarPaciente(PacienteDTO paciente) {
+        Paciente pacienteAActualizar = pacienteDTOaPaciente(paciente);
+        pacienteRepository.save(pacienteAActualizar);
+    }
     public void eliminarPaciente(Long id) { pacienteRepository.deleteById(id); }
+
+
+
+
+//    public PacienteDTO guardarPaciente (PacienteDTO paciente) { return pacienteRepository.save(paciente); }
+//    public Optional<PacienteDTO> buscarPorId(Long id) { return pacienteRepository.findById(id); }
+//    public Optional<PacienteDTO> buscarPorNombreYApellido(String nombre, String apellido) { return pacienteRepository.findByNombreAndApellido(nombre, apellido); }
+//    public Optional<PacienteDTO> buscarPorEmail(String email) { return pacienteRepository.findByEmail(email); }
+//    public List<PacienteDTO> mostrarPacientes() { return pacienteRepository.findAll(); }
+//    public void actualizarPaciente(PacienteDTO paciente) { pacienteRepository.save(paciente); }
+//    public void eliminarPaciente(Long id) { pacienteRepository.deleteById(id); }
 
 }

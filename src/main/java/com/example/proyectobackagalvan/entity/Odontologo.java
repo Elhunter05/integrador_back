@@ -27,4 +27,15 @@ public class Odontologo {
     @JsonIgnore
     @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Turno> turnoSet;
+
+    @Override
+    public String toString() {
+        return "Odontologo{" +
+                "id=" + id +
+                ", matricula=" + matricula +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", turnoSet=" + turnoSet +
+                '}';
+    }
 }

@@ -1,17 +1,16 @@
 package com.example.proyectobackagalvan.service;
 
-import com.example.proyectobackagalvan.entity.Turno;
+import com.example.proyectobackagalvan.dto.TurnoDTO;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface ITurnoService {
-    Turno guardarTurno (Turno turno);
-    Optional<Turno> buscarPorId(Long id);
-    Optional<Set<Turno>> buscarPorOdontologoId(Long odontologoId);
-    Optional<Set<Turno>> buscarPorPaciente(Long pacienteId);
-    List<Turno> mostrarTurnos();
-    void actualizarTurno(Turno turno);
+    TurnoDTO guardarTurno (TurnoDTO turno);
+    Optional<TurnoDTO> buscarTurno(Long id);
+    List<TurnoDTO> buscarPorOdontologo(Long odontologoId);
+    List<TurnoDTO> buscarPorPaciente(Long pacienteId);
+    List<TurnoDTO> mostrarTurnos();
+    void actualizarTurno(TurnoDTO turno);
     void eliminarTurno(Long id);
 }

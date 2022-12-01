@@ -12,13 +12,13 @@ public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String calle;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Integer numero;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String localidad;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String provincia;
 
     public Domicilio() {
@@ -29,5 +29,16 @@ public class Domicilio {
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
+    }
+
+    @Override
+    public String toString() {
+        return "Domicilio{" +
+                "id=" + id +
+                ", calle='" + calle + '\'' +
+                ", numero=" + numero +
+                ", localidad='" + localidad + '\'' +
+                ", provincia='" + provincia + '\'' +
+                '}';
     }
 }
