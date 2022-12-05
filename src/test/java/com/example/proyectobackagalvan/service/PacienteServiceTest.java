@@ -3,6 +3,9 @@ package com.example.proyectobackagalvan.service;
 import com.example.proyectobackagalvan.dto.PacienteDTO;
 import com.example.proyectobackagalvan.dto.TurnoDTO;
 import com.example.proyectobackagalvan.entity.Domicilio;
+import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.repository.DomicilioRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -24,27 +27,48 @@ class PacienteServiceTest {
     @Autowired
     IPacienteService pacienteService;
 
+    @Autowired
+    IOdontologoService odontologoService;
+
+    @Autowired
+    ITurnoService turnoService;
+
+    @Autowired
+    DomicilioRepository domicilioRepository;
+
     @Test
     @Order(1)
     public void guardarPacienteTest() {
-        // Recibe un pacienteDTO, crea un paciente y usa DTOtoPaciente
+        // Recibe un pacienteDTO, crea un paciente y usa PacienteDTOtoPaciente
         // Guarda al paciente y antes del return lo vuelve a transformar de paciente a pacienteDTO
         PacienteDTO pacienteAGuardar = new PacienteDTO();
-
-        Domicilio domicilio = new Domicilio("Falsa", 123, "Sayago", "Montevideo");
 
         pacienteAGuardar.setNombre("Andrés");
         pacienteAGuardar.setApellido("Galván");
         pacienteAGuardar.setDni("4900");
         pacienteAGuardar.setEmail("8il.andre@gmail.com");
         pacienteAGuardar.setFechaIngreso(LocalDate.of(1995, 5, 29));
+
+        Domicilio domicilio = new Domicilio("Falsa", 123, "Sayago", "Montevideo");
+        domicilioRepository.save(domicilio);
         pacienteAGuardar.setDomicilioId(domicilio.getId());
 
         List<Long> turnoIdListDePaciente = new ArrayList<>();
         TurnoDTO turnoDePaciente = new TurnoDTO();
+
+        turnoDePaciente.setId(1L);
+        Paciente pacienteDeTurnoList = new Paciente();
+        turnoDePaciente.setPacienteId(pacienteDeTurnoList.getId());
+        Odontologo odontologoDeTurnoList = new Odontologo();
+        odontologoService.guardarOdontologo(odontologoDeTurnoList);
+        turnoDePaciente.setOdontologoId(odontologoDeTurnoList.getId());
+        turnoDePaciente.setFecha(LocalDate.of(1999, 9, 29));
+        turnoService.guardarTurno(turnoDePaciente);
+
         turnoIdListDePaciente.add(turnoDePaciente.getPacienteId());
 
         pacienteAGuardar.setTurnoIdList(turnoIdListDePaciente);
+
 
         // El problema es que PacienteService no guarda un set, por lo que la conversión falla. Debo arreglar eso primero.
         PacienteDTO pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);

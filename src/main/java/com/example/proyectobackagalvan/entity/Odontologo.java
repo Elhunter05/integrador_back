@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,7 +27,7 @@ public class Odontologo {
 
     @JsonIgnore
     @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private Set<Turno> turnoSet;
+    private Set<Turno> turnoSet = new HashSet<>();
 
     @Override
     public String toString() {

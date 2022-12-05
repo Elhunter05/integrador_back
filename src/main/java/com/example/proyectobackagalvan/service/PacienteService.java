@@ -43,10 +43,10 @@ public class PacienteService implements IPacienteService {
 
         Set<Turno> turnoSet = paciente.getTurnoSet();
         List<Long> turnoIdList = new ArrayList<>();
-
         for (Turno turno: turnoSet) {
             turnoIdList.add(turno.getId());
         }
+        respuesta.setTurnoIdList(turnoIdList);
 
         return respuesta;
     }
@@ -57,11 +57,6 @@ public class PacienteService implements IPacienteService {
         Domicilio domicilio = new Domicilio();
         domicilio.setId(pacienteDTO.getDomicilioId());
 
-        List<Long> turnoIdList = pacienteDTO.getTurnoIdList();
-        Set<Turno> turnoSet = new HashSet<>();
-
-        // Acá iría un for o algo para meter turnos en turnoSet usando turnoIdList, pero no sé cómo conseguir el turno
-
         paciente.setId(pacienteDTO.getId());
         paciente.setNombre(pacienteDTO.getNombre());
         paciente.setApellido(pacienteDTO.getApellido());
@@ -69,6 +64,14 @@ public class PacienteService implements IPacienteService {
         paciente.setEmail(pacienteDTO.getEmail());
         paciente.setFechaIngreso(pacienteDTO.getFechaIngreso());
         paciente.setDomicilio(domicilio);
+
+        List<Long> turnoIdList = pacienteDTO.getTurnoIdList();
+        Set<Turno> turnoSet = new HashSet<>();
+        for (Long id: turnoIdList) {
+            Optional<Turno> turnoEncontrado = turnoRepository.findById(id);
+            turnoSet.add(turnoEncontrado.get());
+        }
+        paciente.setTurnoSet(turnoSet);
 
         return paciente;
     }

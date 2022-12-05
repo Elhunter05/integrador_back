@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,7 +28,7 @@ public class Paciente {
 
     @JsonIgnore
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private Set<Turno> turnoSet;
+    private Set<Turno> turnoSet = new HashSet<>();
 
     @Override
     public String toString() {
