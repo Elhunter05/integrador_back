@@ -1,6 +1,5 @@
 package com.example.proyectobackagalvan.service;
 
-import com.example.proyectobackagalvan.dto.PacienteDTO;
 import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.entity.Turno;
@@ -16,111 +15,40 @@ import java.util.*;
 @Service
 public class PacienteService implements IPacienteService {
     private final PacienteRepository pacienteRepository;
-    private final TurnoRepository turnoRepository;
-    private final ObjectMapper mapper;
     private final Logger LOGGER;
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper, Logger LOGGER) {
+    public PacienteService(PacienteRepository pacienteRepository, Logger LOGGER) {
         this.pacienteRepository = pacienteRepository;
-        this.turnoRepository = turnoRepository;
-        this.mapper = mapper;
         this.LOGGER = LOGGER;
     }
 
-    private PacienteDTO pacienteAPacienteDTO(Paciente paciente) {
-        PacienteDTO respuesta = new PacienteDTO();
-        respuesta.setId(paciente.getId());
-        respuesta.setNombre(paciente.getNombre());
-        respuesta.setApellido(paciente.getApellido());
-        respuesta.setDni(paciente.getDni());
-        respuesta.setEmail(paciente.getEmail());
-        respuesta.setFechaIngreso(paciente.getFechaIngreso());
-        respuesta.setDomicilioId(paciente.getDomicilio().getId());
-
-        Set<Turno> turnoSet = paciente.getTurnoSet();
-        List<Long> turnoIdList = new ArrayList<>();
-        for (Turno turno: turnoSet) {
-            turnoIdList.add(turno.getId());
-        }
-        respuesta.setTurnoIdList(turnoIdList);
-        return respuesta;
-    }
-
-    private Paciente pacienteDTOaPaciente(PacienteDTO pacienteDTO) {
-        Paciente paciente = new Paciente();
-
-        Domicilio domicilio = new Domicilio();
-        domicilio.setId(pacienteDTO.getDomicilioId());
-
-        paciente.setId(pacienteDTO.getId());
-        paciente.setNombre(pacienteDTO.getNombre());
-        paciente.setApellido(pacienteDTO.getApellido());
-        paciente.setDni(pacienteDTO.getDni());
-        paciente.setEmail(pacienteDTO.getEmail());
-        paciente.setFechaIngreso(pacienteDTO.getFechaIngreso());
-        paciente.setDomicilio(domicilio);
-
-        List<Long> turnoIdList = pacienteDTO.getTurnoIdList();
-        Set<Turno> turnoSet = new HashSet<>();
-        for (Long id: turnoIdList) {
-            Optional<Turno> turnoEncontrado = turnoRepository.findById(id);
-            turnoSet.add(turnoEncontrado.get());
-        }
-        paciente.setTurnoSet(turnoSet);
-
-        return paciente;
-    }
-
-    public PacienteDTO guardarPaciente (PacienteDTO paciente) {
-        Paciente pacienteAGuardar = pacienteDTOaPaciente(paciente);
-        Paciente pacienteGuardado = pacienteRepository.save(pacienteAGuardar);
+    public Paciente guardarPaciente (Paciente paciente) {
         LOGGER.info("Se ha registrado exitosamente un nuevo paciente");
-        return pacienteAPacienteDTO(pacienteGuardado);
+        return pacienteRepository.save(paciente);
     }
-    public Optional<PacienteDTO> buscarPaciente(Long id) {
+    public Optional<Paciente> buscarPaciente(Long id) {
         LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
-        Optional<Paciente> pacienteBuscado = pacienteRepository.findById(id);
-        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+        return pacienteRepository.findById(id);
     }
-    public Optional<PacienteDTO> buscarPorNombreYApellido(String nombre, String apellido) {
+    public Optional<Paciente> buscarPorNombreYApellido(String nombre, String apellido) {
         LOGGER.info("Iniciando la búsqueda de un paciente con nombre="+nombre+" y apellido="+apellido);
-        Optional<Paciente> pacienteBuscado = pacienteRepository.findByNombreAndApellido(nombre, apellido);
-        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+        return pacienteRepository.findByNombreAndApellido(nombre, apellido);
     }
-    public Optional<PacienteDTO> buscarPorEmail(String email) {
+    public Optional<Paciente> buscarPorEmail(String email) {
         LOGGER.info("Iniciando la búsqueda de un paciente con email="+email);
-        Optional<Paciente> pacienteBuscado = pacienteRepository.findByEmail(email);
-        return pacienteBuscado.map(this::pacienteAPacienteDTO);
+        return pacienteRepository.findByEmail(email);
     }
-    public List<PacienteDTO> mostrarPacientes() {
+    public List<Paciente> mostrarPacientes() {
         LOGGER.info("Iniciando la búsqueda de todos los pacientes");
-        List<Paciente> pacientesEncontrados = pacienteRepository.findAll();
-        List<PacienteDTO> respuesta = new ArrayList<>();
-        for (Paciente p: pacientesEncontrados) {
-            respuesta.add(pacienteAPacienteDTO(p));
-        }
-        return respuesta;
+        return pacienteRepository.findAll();
     }
-    public void actualizarPaciente(PacienteDTO paciente) {
+    public void actualizarPaciente(Paciente paciente) {
         LOGGER.info("Iniciando la actualización del paciente con id="+paciente.getId());
-        Paciente pacienteAActualizar = pacienteDTOaPaciente(paciente);
-        pacienteRepository.save(pacienteAActualizar);
+        pacienteRepository.save(paciente);
     }
     public void eliminarPaciente(Long id) {
         LOGGER.info("Iniciando la eliminación del paciente con id="+id);
         pacienteRepository.deleteById(id);
     }
-
-
-
-
-//    public PacienteDTO guardarPaciente (PacienteDTO paciente) { return pacienteRepository.save(paciente); }
-//    public Optional<PacienteDTO> buscarPorId(Long id) { return pacienteRepository.findById(id); }
-//    public Optional<PacienteDTO> buscarPorNombreYApellido(String nombre, String apellido) { return pacienteRepository.findByNombreAndApellido(nombre, apellido); }
-//    public Optional<PacienteDTO> buscarPorEmail(String email) { return pacienteRepository.findByEmail(email); }
-//    public List<PacienteDTO> mostrarPacientes() { return pacienteRepository.findAll(); }
-//    public void actualizarPaciente(PacienteDTO paciente) { pacienteRepository.save(paciente); }
-//    public void eliminarPaciente(Long id) { pacienteRepository.deleteById(id); }
-
 }

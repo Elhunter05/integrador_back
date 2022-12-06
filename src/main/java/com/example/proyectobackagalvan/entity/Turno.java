@@ -16,22 +16,19 @@ public class Turno {
     private Long id;
 
     @ManyToOne
-//    @JoinColumn(name = "paciente_id", nullable = false)
-    @JoinColumn(name = "paciente_id")
+    @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
 
     @ManyToOne
-//    @JoinColumn(name = "odontologo_id", nullable = false)
-    @JoinColumn(name = "odontologo_id")
+    @JoinColumn(name = "odontologo_id", nullable = false)
     private Odontologo odontologo;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private LocalDate fecha;
 
     public Turno() {
     }
 
-    @Autowired
     public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
         this.paciente = paciente;
         this.odontologo = odontologo;

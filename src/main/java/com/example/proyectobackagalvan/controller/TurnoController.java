@@ -1,8 +1,8 @@
 package com.example.proyectobackagalvan.controller;
 
-import com.example.proyectobackagalvan.dto.OdontologoDTO;
-import com.example.proyectobackagalvan.dto.PacienteDTO;
 import com.example.proyectobackagalvan.dto.TurnoDTO;
+import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.service.OdontologoService;
 import com.example.proyectobackagalvan.service.PacienteService;
 import com.example.proyectobackagalvan.service.TurnoService;
@@ -31,8 +31,8 @@ public class TurnoController {
 
     @PostMapping
     public ResponseEntity<TurnoDTO> guardarTurno(@RequestBody TurnoDTO turno) {
-        Optional<PacienteDTO> pacienteBuscado = pacienteService.buscarPaciente(turno.getPacienteId());
-        Optional<OdontologoDTO> odontologoBuscado = odontologoService.buscarOdontologo(turno.getOdontologoId());
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turno.getPacienteId());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turno.getOdontologoId());
         ResponseEntity<TurnoDTO> response;
 
         if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
@@ -52,13 +52,6 @@ public class TurnoController {
 
         response = turnoBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         return response;
-
-//        if(turnoBuscado.isPresent()){
-//            response = ResponseEntity.ok(turnoBuscado.get());
-//        } else {
-//            response = ResponseEntity.notFound().build();
-//        }
-//        return response;
     }
 
     @GetMapping("/buscar-odontologo/{id}")
@@ -66,16 +59,6 @@ public class TurnoController {
         Optional<List<TurnoDTO>> turnosOdontologo = Optional.ofNullable(turnoService.buscarPorOdontologo(id));
 
         return turnosOdontologo.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
-
-//        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(id);
-//
-//        if(odontologoBuscado.isPresent()) {
-//            Optional<Set<Turno>> turnosOdontologo = turnoService.buscarPorOdontologo(odontologoBuscado.get());
-//            if (turnosOdontologo.isPresent()) {
-//                return ResponseEntity.ok(turnosOdontologo.get());
-//            }
-//        }
-//        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping("/buscar-paciente/{id}")
@@ -83,16 +66,6 @@ public class TurnoController {
         Optional<List<TurnoDTO>> turnosPaciente = Optional.ofNullable(turnoService.buscarPorPaciente(id));
 
         return turnosPaciente.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
-
-//        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
-//
-//        if(pacienteBuscado.isPresent()) {
-//            Optional<Set<Turno>> turnosPaciente = turnoService.buscarPorPaciente(pacienteBuscado.get());
-//            if (turnosPaciente.isPresent()) {
-//                return ResponseEntity.ok(turnosPaciente.get());
-//            }
-//        }
-//        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping

@@ -12,13 +12,13 @@ public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String calle;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private Integer numero;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String localidad;
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String provincia;
 
     public Domicilio() {

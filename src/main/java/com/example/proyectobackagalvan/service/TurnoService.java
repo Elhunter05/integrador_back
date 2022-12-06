@@ -57,12 +57,6 @@ public class TurnoService implements ITurnoService {
         LOGGER.info("Iniciando la búsqueda de un turno con id="+id);
         Optional<Turno> turnoBuscado = turnoRepository.findById(id);
         return turnoBuscado.map(this::turnoATurnoDTO);
-
-//        if (turnoBuscado.isPresent()) {
-//            return Optional.of(turnoATurnoDTO(turnoBuscado.get()));
-//        } else {
-//            return Optional.empty();
-//        }
     }
     public List<TurnoDTO> buscarPorOdontologo(Long odontologoId) {
         LOGGER.info("Iniciando la búsqueda de un odontólogo con id="+odontologoId);
@@ -100,14 +94,4 @@ public class TurnoService implements ITurnoService {
         LOGGER.info("Iniciando la eliminación del turno con id="+id);
         turnoRepository.deleteById(id);
     }
-
-
-//    public Turno guardarTurno (Turno turno) { return turnoRepository.save(turno); }
-//    public Optional<Turno> buscarPorId(Long id) { return turnoRepository.findById(id); }
-//    public Optional<Set<Turno>> buscarPorOdontologoId(Long odontologoId) { return turnoRepository.findByOdontologoId(odontologoId); }
-//    public Optional<Set<Turno>> buscarPorPaciente(Long pacienteId) { return turnoRepository.findByPacienteId(pacienteId); }
-//    public List<Turno> mostrarTurnos() { return turnoRepository.findAll(); }
-//    public void actualizarTurno(Turno turno) { turnoRepository.save(turno); }
-//    public void eliminarTurno(Long id) { turnoRepository.deleteById(id); }
-
 }

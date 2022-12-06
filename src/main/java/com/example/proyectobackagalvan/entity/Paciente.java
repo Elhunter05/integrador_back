@@ -34,7 +34,6 @@ public class Paciente {
     public Paciente() {
     }
 
-    @Autowired
     public Paciente(String nombre, String apellido, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio, Set<Turno> turnoSet) {
         this.nombre = nombre;
         this.apellido = apellido;

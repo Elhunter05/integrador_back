@@ -33,7 +33,6 @@ public class Odontologo {
     public Odontologo() {
     }
 
-    @Autowired
     public Odontologo(Integer matricula, String nombre, String apellido, Set<Turno> turnoSet) {
         this.matricula = matricula;
         this.nombre = nombre;
