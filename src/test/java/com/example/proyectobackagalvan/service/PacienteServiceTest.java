@@ -5,6 +5,7 @@ import com.example.proyectobackagalvan.dto.TurnoDTO;
 import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.entity.Turno;
 import com.example.proyectobackagalvan.repository.DomicilioRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,39 +43,76 @@ class PacienteServiceTest {
     public void guardarPacienteTest() {
         // Recibe un pacienteDTO, crea un paciente y usa PacienteDTOtoPaciente
         // Guarda al paciente y antes del return lo vuelve a transformar de paciente a pacienteDTO
-        PacienteDTO pacienteAGuardar = new PacienteDTO();
 
+        // PacienteDTOAPaciente: este método crea un Paciente nuevo y le mete la info de PacienteDTO, así que no necesito crear un Paciente
+        // guardarPaciente ya usa los métodos para convertir un PacienteDTOAPaciente, guardarlo en la BD y después volverlo a convertir para devolver un PacienteDTO
+        // así que sólo tengo que crear un PacienteDTO con los datos que precisa e invocar al método guardarPaciente
+        PacienteDTO pacienteAGuardar = new PacienteDTO();
         pacienteAGuardar.setNombre("Andrés");
         pacienteAGuardar.setApellido("Galván");
         pacienteAGuardar.setDni("4900");
         pacienteAGuardar.setEmail("8il.andre@gmail.com");
         pacienteAGuardar.setFechaIngreso(LocalDate.of(1995, 5, 29));
 
-        Domicilio domicilio = new Domicilio("Falsa", 123, "Sayago", "Montevideo");
-        domicilioRepository.save(domicilio);
-        pacienteAGuardar.setDomicilioId(domicilio.getId());
-
-        List<Long> turnoIdListDePaciente = new ArrayList<>();
-        TurnoDTO turnoDePaciente = new TurnoDTO();
-
-        turnoDePaciente.setId(1L);
-        Paciente pacienteDeTurnoList = new Paciente();
-        turnoDePaciente.setPacienteId(pacienteDeTurnoList.getId());
-        Odontologo odontologoDeTurnoList = new Odontologo();
-        odontologoService.guardarOdontologo(odontologoDeTurnoList);
-        turnoDePaciente.setOdontologoId(odontologoDeTurnoList.getId());
-        turnoDePaciente.setFecha(LocalDate.of(1999, 9, 29));
-        turnoService.guardarTurno(turnoDePaciente);
-
-        turnoIdListDePaciente.add(turnoDePaciente.getPacienteId());
-
-        pacienteAGuardar.setTurnoIdList(turnoIdListDePaciente);
+        // El PacienteDTO va a tener referencias a los id de un Domicilio y de una List<Long> de turnos, así que debo crear esos primero
+        Domicilio domicilioDePacienteDTO = new Domicilio("Calle a",548,"Salta Capital","Salta");
+        pacienteAGuardar.setDomicilioId(domicilioDePacienteDTO.getId());
+        // *******VER SI PRECISO GUARDARLO**********
 
 
-        // El problema es que PacienteService no guarda un set, por lo que la conversión falla. Debo arreglar eso primero.
+        List<Long> longListDePacienteDTO = new ArrayList<>();
+
+        // A la lista... Debería ponerle el id de un turno existente para que lo encuentre en la BD y no me devuelva error
+        // Aunque si hago esto, al turno en cuestión debo pasarle un paciente, odontólogo y demás... which doesn't make sense. A menos que lo deje vacío.
+        // Le quité los nullable = false a la clase Turno para hacer esto posible
+        Turno turnoDeLongListDePacienteDTO = new Turno();
+
+        // Agrego el id del turno a la lista de turnos, para pasarle la lista al PacienteDTO
+        // *******VER SI PRECISO GUARDARLO**********
+        longListDePacienteDTO.add(turnoDeLongListDePacienteDTO.getId());
+        pacienteAGuardar.setTurnoIdList(longListDePacienteDTO);
+
+        // Último paso: guardar el pacienteDTO y comprobar equivalencia
+        pacienteService.guardarPaciente(pacienteAGuardar);
         PacienteDTO pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
-
         assertEquals(1L, pacienteGuardado.getId());
+
+//        Paciente paciente = new Paciente("Rodolfo","Baspineiro","5161", "prueba@gmail.com", LocalDate.of(2022,11,28),
+//                new Domicilio("Calle a",548,"Salta Capital","Salta"), new HashSet<Turno>());
+
+
+
+//        pacienteAGuardar.setNombre("Andrés");
+//        pacienteAGuardar.setApellido("Galván");
+//        pacienteAGuardar.setDni("4900");
+//        pacienteAGuardar.setEmail("8il.andre@gmail.com");
+//        pacienteAGuardar.setFechaIngreso(LocalDate.of(1995, 5, 29));
+//
+//        Domicilio domicilio = new Domicilio("Falsa", 123, "Sayago", "Montevideo");
+//        domicilioRepository.save(domicilio);
+//        pacienteAGuardar.setDomicilioId(domicilio.getId());
+//
+//        List<Long> turnoIdListDePaciente = new ArrayList<>();
+//        TurnoDTO turnoDePaciente = new TurnoDTO();
+//
+//        turnoDePaciente.setId(1L);
+//        Paciente pacienteDeTurnoList = new Paciente();
+//        turnoDePaciente.setPacienteId(pacienteDeTurnoList.getId());
+//        Odontologo odontologoDeTurnoList = new Odontologo();
+//        odontologoService.guardarOdontologo(odontologoDeTurnoList);
+//        turnoDePaciente.setOdontologoId(odontologoDeTurnoList.getId());
+//        turnoDePaciente.setFecha(LocalDate.of(1999, 9, 29));
+//        turnoService.guardarTurno(turnoDePaciente);
+//
+//        turnoIdListDePaciente.add(turnoDePaciente.getPacienteId());
+//
+//        pacienteAGuardar.setTurnoIdList(turnoIdListDePaciente);
+//
+//
+//        // El problema es que PacienteService no guarda un set, por lo que la conversión falla. Debo arreglar eso primero.
+//        PacienteDTO pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
+//
+//        assertEquals(1L, pacienteGuardado.getId());
     }
 
     @Test

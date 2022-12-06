@@ -3,6 +3,7 @@ package com.example.proyectobackagalvan.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -28,6 +29,17 @@ public class Odontologo {
     @JsonIgnore
     @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Turno> turnoSet = new HashSet<>();
+
+    public Odontologo() {
+    }
+
+    @Autowired
+    public Odontologo(Integer matricula, String nombre, String apellido, Set<Turno> turnoSet) {
+        this.matricula = matricula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.turnoSet = turnoSet;
+    }
 
     @Override
     public String toString() {

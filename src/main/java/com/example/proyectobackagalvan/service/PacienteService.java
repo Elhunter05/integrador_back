@@ -7,6 +7,7 @@ import com.example.proyectobackagalvan.entity.Turno;
 import com.example.proyectobackagalvan.repository.PacienteRepository;
 import com.example.proyectobackagalvan.repository.TurnoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +18,15 @@ public class PacienteService implements IPacienteService {
     private final PacienteRepository pacienteRepository;
     private final TurnoRepository turnoRepository;
     private final ObjectMapper mapper;
+    private final Logger LOGGER;
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper) {
+    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper, Logger LOGGER) {
         this.pacienteRepository = pacienteRepository;
         this.turnoRepository = turnoRepository;
         this.mapper = mapper;
+        this.LOGGER = LOGGER;
     }
-
-
-
-    // Loguear cada método en los service
-
-
 
     private PacienteDTO pacienteAPacienteDTO(Paciente paciente) {
         PacienteDTO respuesta = new PacienteDTO();
@@ -47,7 +44,6 @@ public class PacienteService implements IPacienteService {
             turnoIdList.add(turno.getId());
         }
         respuesta.setTurnoIdList(turnoIdList);
-
         return respuesta;
     }
 
@@ -79,21 +75,26 @@ public class PacienteService implements IPacienteService {
     public PacienteDTO guardarPaciente (PacienteDTO paciente) {
         Paciente pacienteAGuardar = pacienteDTOaPaciente(paciente);
         Paciente pacienteGuardado = pacienteRepository.save(pacienteAGuardar);
+        LOGGER.info("Se ha registrado exitosamente un nuevo paciente");
         return pacienteAPacienteDTO(pacienteGuardado);
     }
     public Optional<PacienteDTO> buscarPaciente(Long id) {
+        LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
         Optional<Paciente> pacienteBuscado = pacienteRepository.findById(id);
         return pacienteBuscado.map(this::pacienteAPacienteDTO);
     }
     public Optional<PacienteDTO> buscarPorNombreYApellido(String nombre, String apellido) {
+        LOGGER.info("Iniciando la búsqueda de un paciente con nombre="+nombre+" y apellido="+apellido);
         Optional<Paciente> pacienteBuscado = pacienteRepository.findByNombreAndApellido(nombre, apellido);
         return pacienteBuscado.map(this::pacienteAPacienteDTO);
     }
     public Optional<PacienteDTO> buscarPorEmail(String email) {
+        LOGGER.info("Iniciando la búsqueda de un paciente con email="+email);
         Optional<Paciente> pacienteBuscado = pacienteRepository.findByEmail(email);
         return pacienteBuscado.map(this::pacienteAPacienteDTO);
     }
     public List<PacienteDTO> mostrarPacientes() {
+        LOGGER.info("Iniciando la búsqueda de todos los pacientes");
         List<Paciente> pacientesEncontrados = pacienteRepository.findAll();
         List<PacienteDTO> respuesta = new ArrayList<>();
         for (Paciente p: pacientesEncontrados) {
@@ -102,10 +103,14 @@ public class PacienteService implements IPacienteService {
         return respuesta;
     }
     public void actualizarPaciente(PacienteDTO paciente) {
+        LOGGER.info("Iniciando la actualización del paciente con id="+paciente.getId());
         Paciente pacienteAActualizar = pacienteDTOaPaciente(paciente);
         pacienteRepository.save(pacienteAActualizar);
     }
-    public void eliminarPaciente(Long id) { pacienteRepository.deleteById(id); }
+    public void eliminarPaciente(Long id) {
+        LOGGER.info("Iniciando la eliminación del paciente con id="+id);
+        pacienteRepository.deleteById(id);
+    }
 
 
 

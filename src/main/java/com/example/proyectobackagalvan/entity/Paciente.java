@@ -3,6 +3,7 @@ package com.example.proyectobackagalvan.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,6 +30,20 @@ public class Paciente {
     @JsonIgnore
     @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Turno> turnoSet = new HashSet<>();
+
+    public Paciente() {
+    }
+
+    @Autowired
+    public Paciente(String nombre, String apellido, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio, Set<Turno> turnoSet) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
+        this.turnoSet = turnoSet;
+    }
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ package com.example.proyectobackagalvan.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,19 +16,22 @@ public class Turno {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_id", nullable = false)
+//    @JoinColumn(name = "paciente_id", nullable = false)
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
     @ManyToOne
-    @JoinColumn(name = "odontologo_id", nullable = false)
+//    @JoinColumn(name = "odontologo_id", nullable = false)
+    @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private LocalDate fecha;
 
     public Turno() {
     }
 
+    @Autowired
     public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
         this.paciente = paciente;
         this.odontologo = odontologo;
