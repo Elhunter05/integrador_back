@@ -18,14 +18,13 @@ public class PacienteService implements IPacienteService {
     private final PacienteRepository pacienteRepository;
     private final TurnoRepository turnoRepository;
     private final ObjectMapper mapper;
-    private final Logger LOGGER;
+    private final Logger LOGGER = Logger.getLogger(PacienteService.class);
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper, Logger LOGGER) {
+    public PacienteService(PacienteRepository pacienteRepository, TurnoRepository turnoRepository, ObjectMapper mapper) {
         this.pacienteRepository = pacienteRepository;
         this.turnoRepository = turnoRepository;
         this.mapper = mapper;
-        this.LOGGER = LOGGER;
     }
 
     private PacienteDTO pacienteAPacienteDTO(Paciente paciente) {

@@ -1,0 +1,25 @@
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:81] Iniciando la búsqueda de un paciente con id=1
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:86] Iniciando la búsqueda de un paciente con nombre=Andrés y apellido=Galván
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:91] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:96] Iniciando la búsqueda de todos los pacientes
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:105] Iniciando la actualización del paciente con id=1
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:81] Iniciando la búsqueda de un paciente con id=1
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:110] Iniciando la eliminación del paciente con id=1
+[2022-12-06 01:48:41] [ INFO ] [PacienteService:81] Iniciando la búsqueda de un paciente con id=1
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:61] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:65] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:70] Iniciando la búsqueda de un odontólogo con nombre=Andrés y apellido=Galván
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:75] Iniciando la búsqueda de un odontólogo con matrícula=1234
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:80] Iniciando la búsqueda de todos los odontólogos
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:89] Iniciando la actualización del odontólogo con id=1
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:65] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:94] Iniciando la eliminación del odontólogo con id=1
+[2022-12-06 01:49:12] [ INFO ] [OdontologoService:65] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-06 01:49:43] [ INFO ] [OdontologoService:61] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-06 01:49:43] [ INFO ] [PacienteService:77] Se ha registrado exitosamente un nuevo paciente
+[2022-12-06 01:49:43] [ INFO ] [TurnoService:56] Iniciando la búsqueda de un turno con id=1
+[2022-12-06 01:49:44] [ INFO ] [TurnoService:67] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-06 01:49:44] [ INFO ] [TurnoService:76] Iniciando la búsqueda de un paciente con id=1
+[2022-12-06 01:49:44] [ INFO ] [TurnoService:85] Iniciando la búsqueda de todos los turnos
+[2022-12-06 01:49:44] [ INFO ] [OdontologoService:61] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-06 01:49:44] [ INFO ] [TurnoService:99] Iniciando la eliminación del turno con id=1

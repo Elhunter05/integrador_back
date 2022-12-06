@@ -13,12 +13,11 @@ import java.util.*;
 @Service
 public class OdontologoService implements IOdontologoService {
     private final OdontologoRepository odontologoRepository;
-    private final Logger LOGGER;
+    private final Logger LOGGER = Logger.getLogger(OdontologoService.class);
 
     @Autowired
-    public OdontologoService(OdontologoRepository odontologoRepository, Logger LOGGER) {
+    public OdontologoService(OdontologoRepository odontologoRepository) {
         this.odontologoRepository = odontologoRepository;
-        this.LOGGER = LOGGER;
     }
 
     private OdontologoDTO odontologoAOdontologoDTO(Odontologo odontologo) {
