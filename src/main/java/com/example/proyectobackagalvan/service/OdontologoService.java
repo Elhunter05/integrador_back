@@ -1,7 +1,6 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
-import com.example.proyectobackagalvan.entity.Turno;
 import com.example.proyectobackagalvan.repository.OdontologoRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,11 @@ import java.util.*;
 @Service
 public class OdontologoService implements IOdontologoService {
     private final OdontologoRepository odontologoRepository;
-    private final Logger LOGGER;
+    private final Logger LOGGER = Logger.getLogger(OdontologoService.class);
 
     @Autowired
-    public OdontologoService(OdontologoRepository odontologoRepository, Logger LOGGER) {
+    public OdontologoService(OdontologoRepository odontologoRepository) {
         this.odontologoRepository = odontologoRepository;
-        this.LOGGER = LOGGER;
     }
 
     public Odontologo guardarOdontologo(Odontologo odontologo) {

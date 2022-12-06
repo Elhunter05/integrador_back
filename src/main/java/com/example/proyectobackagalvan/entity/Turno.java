@@ -2,7 +2,6 @@ package com.example.proyectobackagalvan.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;

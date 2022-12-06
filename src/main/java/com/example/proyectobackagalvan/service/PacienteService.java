@@ -1,11 +1,7 @@
 package com.example.proyectobackagalvan.service;
 
-import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Paciente;
-import com.example.proyectobackagalvan.entity.Turno;
 import com.example.proyectobackagalvan.repository.PacienteRepository;
-import com.example.proyectobackagalvan.repository.TurnoRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +11,11 @@ import java.util.*;
 @Service
 public class PacienteService implements IPacienteService {
     private final PacienteRepository pacienteRepository;
-    private final Logger LOGGER;
+    private final Logger LOGGER = Logger.getLogger(PacienteService.class);
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository, Logger LOGGER) {
+    public PacienteService(PacienteRepository pacienteRepository) {
         this.pacienteRepository = pacienteRepository;
-        this.LOGGER = LOGGER;
     }
 
     public Paciente guardarPaciente (Paciente paciente) {

@@ -14,12 +14,11 @@ import java.util.*;
 @Service
 public class TurnoService implements ITurnoService {
     private final TurnoRepository turnoRepository;
-    private final Logger LOGGER;
+    private final Logger LOGGER = Logger.getLogger(TurnoService.class);
 
     @Autowired
-    public TurnoService(TurnoRepository turnoRepository, Logger LOGGER) {
+    public TurnoService(TurnoRepository turnoRepository) {
         this.turnoRepository = turnoRepository;
-        this.LOGGER = LOGGER;
     }
 
     private TurnoDTO turnoATurnoDTO(Turno turno) {
