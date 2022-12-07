@@ -26,7 +26,7 @@ public class OdontologoService implements IOdontologoService {
     }
     public Optional<Odontologo> buscarOdontologo(Long id) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado = odontologoRepository.findById(id);
-        if (odontologoBuscado.isPresent()) {
+        if (odontologoBuscado.isEmpty()) {
             throw new ResourceNotFoundException("No se encontró ningún odontólogo con id="+id);
         }
         LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
@@ -34,7 +34,7 @@ public class OdontologoService implements IOdontologoService {
     }
     public Optional<Odontologo> buscarPorMatricula(Integer matricula) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado = odontologoRepository.findByMatricula(matricula);
-        if (odontologoBuscado.isPresent()) {
+        if (odontologoBuscado.isEmpty()) {
             throw new ResourceNotFoundException("");
         }
         LOGGER.info("Iniciando la búsqueda de un odontólogo con matrícula="+matricula);

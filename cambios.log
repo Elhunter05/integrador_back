@@ -66,3 +66,120 @@
 [2022-12-07 02:00:03] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
 [2022-12-07 02:00:03] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
 [2022-12-07 02:00:03] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:43:36] [ INFO ] [PacienteService:59] Se eliminó al paciente con id=1
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 12:44:51] [ INFO ] [PacienteService:59] Se eliminó al paciente con id=2
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:56:18] [ INFO ] [PacienteService:57] Se ha iniciado la eliminación del Paciente con id: 1
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 12:57:53] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 12:57:54] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:05:09] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:05:17] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:05:18] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:08:07] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:10:25] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:16:33] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:17:09] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:17:59] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:18:39] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1
+[2022-12-07 13:19:13] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:39] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=2
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:31] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 13:19:14] [ INFO ] [PacienteService:57] Se eliminó al paciente con id=1

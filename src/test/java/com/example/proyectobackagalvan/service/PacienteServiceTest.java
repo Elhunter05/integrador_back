@@ -89,8 +89,12 @@ class PacienteServiceTest {
     public void eliminarPacienteTest() throws ResourceNotFoundException  {
         Long idAEliminar = 1L;
         pacienteService.eliminarPaciente(idAEliminar);
-        Optional<Paciente> pacienteEliminado = pacienteService.buscarPaciente(idAEliminar);
 
-        assertFalse(pacienteEliminado.isPresent());
+        ResourceNotFoundException thrown = assertThrows(
+                ResourceNotFoundException.class,
+                () -> pacienteService.buscarPaciente(idAEliminar)
+        );
+
+        assertTrue(thrown.getMessage().contains("No se encontró ningún paciente con id="+idAEliminar));
     }
 }
