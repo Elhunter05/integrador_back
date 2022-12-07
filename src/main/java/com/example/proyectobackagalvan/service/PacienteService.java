@@ -1,6 +1,7 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.PacienteRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,31 +20,42 @@ public class PacienteService implements IPacienteService {
     }
 
     public Paciente guardarPaciente (Paciente paciente) {
-        LOGGER.info("Se ha registrado exitosamente un nuevo paciente");
+        LOGGER.info("Se registró un nuevo paciente");
         return pacienteRepository.save(paciente);
     }
-    public Optional<Paciente> buscarPaciente(Long id) {
+    public Optional<Paciente> buscarPaciente(Long id) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado = pacienteRepository.findById(id);
+        if (pacienteBuscado.isPresent()) {
+            throw new ResourceNotFoundException("No se encontró ningún paciente con id="+id);
+        }
         LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
-        return pacienteRepository.findById(id);
+        return pacienteBuscado;
     }
-    public Optional<Paciente> buscarPorNombreYApellido(String nombre, String apellido) {
-        LOGGER.info("Iniciando la búsqueda de un paciente con nombre="+nombre+" y apellido="+apellido);
-        return pacienteRepository.findByNombreAndApellido(nombre, apellido);
-    }
-    public Optional<Paciente> buscarPorEmail(String email) {
+    public Optional<Paciente> buscarPorEmail(String email) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado = pacienteRepository.findByEmail(email);
+        if (pacienteBuscado.isPresent()) {
+            throw new ResourceNotFoundException("");
+        }
         LOGGER.info("Iniciando la búsqueda de un paciente con email="+email);
-        return pacienteRepository.findByEmail(email);
+        return pacienteBuscado;
+    }
+    public List<Paciente> buscarPacientesPorNombreYApellido(String nombre, String apellido) {
+        LOGGER.info("Iniciando la búsqueda de pacientes con nombre "+nombre+" y apellido "+apellido);
+        return pacienteRepository.findAllByNombreAndApellido(nombre, apellido);
     }
     public List<Paciente> mostrarPacientes() {
         LOGGER.info("Iniciando la búsqueda de todos los pacientes");
         return pacienteRepository.findAll();
     }
     public void actualizarPaciente(Paciente paciente) {
-        LOGGER.info("Iniciando la actualización del paciente con id="+paciente.getId());
         pacienteRepository.save(paciente);
+        LOGGER.info("Se actualizó al paciente con id="+paciente.getId());
     }
-    public void eliminarPaciente(Long id) {
-        LOGGER.info("Iniciando la eliminación del paciente con id="+id);
+    public void eliminarPaciente(Long id) throws ResourceNotFoundException {
+        if (buscarPaciente(id).isEmpty()) {
+            throw new ResourceNotFoundException("No existe ningún paciente con id="+id);
+        }
         pacienteRepository.deleteById(id);
+        LOGGER.info("Se eliminó al paciente con id="+id);
     }
 }

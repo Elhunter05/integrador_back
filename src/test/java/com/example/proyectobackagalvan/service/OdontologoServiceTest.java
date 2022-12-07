@@ -1,6 +1,7 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ class OdontologoServiceTest {
 
     @Test
     @Order(2)
-    public void buscarPorIdTest() {
+    public void buscarPorIdTest() throws ResourceNotFoundException {
         Long idABuscar = 1L;
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(idABuscar);
 
@@ -44,14 +45,14 @@ class OdontologoServiceTest {
     public void buscarPorNombreYApellidoTest() {
         String nombre = "Andrés";
         String apellido = "Galván";
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorNombreYApellido(nombre, apellido);
+        List<Odontologo> odontologoBuscado = odontologoService.buscarOdontologosPorNombreYApellido(nombre, apellido);
 
         assertNotNull(odontologoBuscado);
     }
 
     @Test
     @Order(4)
-    public void buscarPorMatriculaTest() {
+    public void buscarPorMatriculaTest() throws ResourceNotFoundException  {
         Integer matricula = 12345;
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorMatricula(matricula);
 
@@ -69,7 +70,7 @@ class OdontologoServiceTest {
 
     @Test
     @Order(6)
-    public void actualizarOdontologoTest() {
+    public void actualizarOdontologoTest() throws ResourceNotFoundException  {
         Odontologo odontologoAActualizar = new Odontologo(888, "Javi", "Grande", new HashSet<>());
         odontologoService.actualizarOdontologo(odontologoAActualizar);
         Optional<Odontologo> odontologoActualizado = odontologoService.buscarOdontologo(odontologoAActualizar.getId());
@@ -79,7 +80,7 @@ class OdontologoServiceTest {
 
     @Test
     @Order(7)
-    public void eliminarOdontologoTest() {
+    public void eliminarOdontologoTest() throws ResourceNotFoundException  {
         Long idAEliminar = 1L;
         odontologoService.eliminarOdontologo(idAEliminar);
         Optional<Odontologo> odontologoEliminado = odontologoService.buscarOdontologo(idAEliminar);

@@ -5,6 +5,8 @@ import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.entity.Turno;
+import com.example.proyectobackagalvan.exception.BadRequestException;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -32,32 +34,23 @@ class TurnoServiceTest {
 
     @Test
     @Order(1)
-    public void guardarTurnoTest() {
-        TurnoDTO turnoAGuardar = new TurnoDTO();
+    public void guardarTurnoTest() throws ResourceNotFoundException, BadRequestException {
+        Paciente pacienteAGuardar = pacienteService.guardarPaciente(new Paciente("Andrés","Galván", "4900", "8il.andre@gmail.com", LocalDate.of(2022,12,12),
+                new Domicilio("Calle a",548,"Salta Capital","Salta"), new HashSet<>()));
+        Odontologo odontologoAGuardar = odontologoService.guardarOdontologo(new Odontologo(12345, "Andrés", "Galván", new HashSet<>()));
 
-        Turno turnoDeOdontologo = new Turno(new Paciente(), new Odontologo(), LocalDate.of(2022,12,12));
+        TurnoDTO turnoDTOAGuardar = new TurnoDTO();
+        turnoDTOAGuardar.setPacienteId(pacienteAGuardar.getId());
+        turnoDTOAGuardar.setOdontologoId(odontologoAGuardar.getId());
+        turnoDTOAGuardar.setFecha(LocalDate.of(2022,12,12));
+        turnoService.guardarTurno(turnoDTOAGuardar);
 
-        Odontologo odontologoAGuardar = new Odontologo(12345, "Andrés", "Galván",
-                new HashSet<Turno>((Collection<? extends Turno>) turnoDeOdontologo));
-        odontologoService.guardarOdontologo(odontologoAGuardar);
-
-        Paciente pacienteAGuardar = new Paciente("Andrés","Galván", "4900", "8il.andre@gmail.com", LocalDate.of(2022,12,12),
-                new Domicilio("Calle a",548,"Salta Capital","Salta"),
-                new HashSet<Turno>((Collection<? extends Turno>) turnoDeOdontologo));
-        pacienteService.guardarPaciente(pacienteAGuardar);
-
-        turnoAGuardar.setOdontologoId(odontologoAGuardar.getId());
-        turnoAGuardar.setPacienteId(pacienteAGuardar.getId());
-        turnoAGuardar.setFecha(LocalDate.of(1995,5,29));
-
-        TurnoDTO turnoGuardado = turnoService.guardarTurno(turnoAGuardar);
-
-        assertEquals(1L, turnoGuardado.getId());
+        assertEquals(1L, turnoDTOAGuardar.getId());
     }
 
     @Test
     @Order(2)
-    public void buscarPorIdTest() {
+    public void buscarPorIdTest() throws ResourceNotFoundException {
         Long idABuscar = 1L;
         Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(idABuscar);
 
@@ -92,7 +85,7 @@ class TurnoServiceTest {
 
     @Test
     @Order(6)
-    public void actualizarTurnoTest() {
+    public void actualizarTurnoTest() throws ResourceNotFoundException {
         TurnoDTO turnoAActualizar = new TurnoDTO();
 
         Turno turnoDeOdontologo = new Turno(new Paciente(), new Odontologo(), LocalDate.of(2022,12,12));
@@ -118,7 +111,7 @@ class TurnoServiceTest {
 
     @Test
     @Order(7)
-    public void eliminarTurnoTest() {
+    public void eliminarTurnoTest() throws ResourceNotFoundException {
         Long idAEliminar = 1L;
         turnoService.eliminarTurno(idAEliminar);
         Optional<TurnoDTO> turnoEliminado = turnoService.buscarTurno(idAEliminar);

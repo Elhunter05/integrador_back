@@ -1,6 +1,8 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.OdontologoRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +24,25 @@ public class OdontologoService implements IOdontologoService {
         LOGGER.info("Se ha registrado exitosamente un nuevo odontólogo");
         return odontologoRepository.save(odontologo);
     }
-    public Optional<Odontologo> buscarOdontologo(Long id) {
-        LOGGER.info("Iniciando la búsqueda de un odontólogo con id="+id);
-        return odontologoRepository.findById(id);
+    public Optional<Odontologo> buscarOdontologo(Long id) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado = odontologoRepository.findById(id);
+        if (odontologoBuscado.isPresent()) {
+            throw new ResourceNotFoundException("No se encontró ningún odontólogo con id="+id);
+        }
+        LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
+        return odontologoBuscado;
     }
-    public Optional<Odontologo> buscarPorNombreYApellido(String nombre, String apellido) {
-        LOGGER.info("Iniciando la búsqueda de un odontólogo con nombre="+nombre+" y apellido="+apellido);
-        return odontologoRepository.findByNombreAndApellido(nombre, apellido);
-    }
-    public Optional<Odontologo> buscarPorMatricula(Integer matricula) {
+    public Optional<Odontologo> buscarPorMatricula(Integer matricula) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado = odontologoRepository.findByMatricula(matricula);
+        if (odontologoBuscado.isPresent()) {
+            throw new ResourceNotFoundException("");
+        }
         LOGGER.info("Iniciando la búsqueda de un odontólogo con matrícula="+matricula);
-        return odontologoRepository.findByMatricula(matricula);
+        return odontologoBuscado;
+    }
+    public List<Odontologo> buscarOdontologosPorNombreYApellido(String nombre, String apellido) {
+        LOGGER.info("Iniciando la búsqueda de un odontólogo con nombre "+nombre+" y apellido "+apellido);
+        return odontologoRepository.findAllByNombreAndApellido(nombre, apellido);
     }
     public List<Odontologo> mostrarOdontologos() {
         LOGGER.info("Iniciando la búsqueda de todos los odontólogos");
@@ -42,8 +52,11 @@ public class OdontologoService implements IOdontologoService {
         LOGGER.info("Iniciando la actualización del odontólogo con id="+odontologo.getId());
         odontologoRepository.save(odontologo);
     }
-    public void eliminarOdontologo(Long id) {
-        LOGGER.info("Iniciando la eliminación del odontólogo con id="+id);
+    public void eliminarOdontologo(Long id) throws ResourceNotFoundException {
+        if (buscarOdontologo(id).isEmpty()) {
+            throw new ResourceNotFoundException("No existe un odontólogo con id="+id);
+        }
         odontologoRepository.deleteById(id);
+        LOGGER.info("Iniciando la eliminación del odontólogo con id="+id);
     }
 }

@@ -19,14 +19,11 @@ public class Odontologo {
     @Column(unique = true)
     private Integer matricula;
 
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String apellido;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private Set<Turno> turnoSet = new HashSet<>();
 
     public Odontologo() {

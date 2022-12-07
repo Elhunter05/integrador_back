@@ -1,6 +1,9 @@
 package com.example.proyectobackagalvan.controller;
 
+import com.example.proyectobackagalvan.dto.TurnoDTO;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.BadRequestException;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,67 +24,44 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<Paciente> registrarPaciente(@RequestBody Paciente paciente) {
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
 
     @GetMapping("/buscar-id/{id}")
-    public ResponseEntity<Paciente> buscarPacientePorId(@PathVariable("id") Long id) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(id);
-        ResponseEntity<Paciente> response;
-
-        response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-        return response;
-    }
-
-    @GetMapping("/buscar-nombre-completo/{nombre}-{apellido}")
-    public ResponseEntity<Paciente> buscarPorNombreYApellido(@PathVariable(name = "nombre") String nombre, @PathVariable(name = "apellido") String apellido) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorNombreYApellido(nombre, apellido);
-        ResponseEntity<Paciente> response;
-
-        response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-        return response;
+    public ResponseEntity<Paciente> buscarPacientePorId(@PathVariable("id") Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(pacienteService.buscarPaciente(id).get());
     }
 
     @GetMapping("/buscar-email/{email}")
-    public ResponseEntity<Paciente> buscarPorEmail(@PathVariable("email") String email) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorEmail(email);
-        ResponseEntity<Paciente> response;
+    public ResponseEntity<Paciente> buscarPorEmail(@PathVariable("email") String email) throws ResourceNotFoundException {
+        return ResponseEntity.ok(pacienteService.buscarPorEmail(email).get());
+    }
 
-        response = pacienteBuscado.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-        return response;
+    @GetMapping("/buscar-nombre-completo/{nombre}-{apellido}")
+    public ResponseEntity<List<Paciente>> buscarPacientesPorNombreYApellido(@PathVariable(name = "nombre") String nombre, @PathVariable(name = "apellido") String apellido) {
+        Optional<List<Paciente>> pacientesBuscadoList = Optional.ofNullable(pacienteService.buscarPacientesPorNombreYApellido(nombre, apellido));
+        return pacientesBuscadoList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping
     public ResponseEntity<List<Paciente>> mostrarPacientes() {
-        return ResponseEntity.ok(pacienteService.mostrarPacientes());
+        Optional<List<Paciente>> pacientesList = Optional.ofNullable(pacienteService.mostrarPacientes());
+        return pacientesList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente){
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(paciente.getId());
-        ResponseEntity<String> response;
-
-        if (pacienteBuscado.isPresent()) {
-            pacienteService.actualizarPaciente(paciente);
-            response = ResponseEntity.ok("Se actualizó el paciente con apellido " + paciente.getApellido());
-        } else {
-            response = ResponseEntity.badRequest().body("El paciente con id= " + paciente.getId() + " no existe en la base de datos");
+    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente) throws ResourceNotFoundException {
+        if (pacienteService.buscarPaciente(paciente.getId()).isEmpty()) {
+            throw new ResourceNotFoundException("No se encontró ningún paciente con id="+paciente.getId());
         }
-        return response;
+        pacienteService.actualizarPaciente(paciente);
+        return ResponseEntity.ok("Se actualizó al paciente con id="+paciente.getId());
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(id);
-        ResponseEntity<String> response;
-
-        if (pacienteBuscado.isPresent()) {
-            pacienteService.eliminarPaciente(pacienteBuscado.get().getId());
-            response = ResponseEntity.ok().body("El paciente fue eliminado");
-        } else {
-            response = ResponseEntity.badRequest().body("No se puede eliminar al paciente con id=" + id + ", ya que el mismo no existe en la base de datos");
-        }
-        return response;
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        pacienteService.eliminarPaciente(id);
+        return ResponseEntity.ok().body("El paciente con id=" + id + " fue eliminado");
     }
 }

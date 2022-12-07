@@ -26,6 +26,7 @@
 //                .authorizeRequests()
 //                .antMatchers("/pacientes")
 //                .permitAll()
+//                    ------------->Acá definir qué rol tiene qué permisos
 //                .anyRequest()
 //                .authenticated()
 //                .and()

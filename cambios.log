@@ -1,0 +1,68 @@
+[2022-12-07 01:37:57] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:37:57] [ INFO ] [OdontologoService:24] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-07 01:37:57] [ INFO ] [TurnoService:35] Se registró un nuevo turno con id=null
+[2022-12-07 01:37:57] [ INFO ] [TurnoService:48] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-07 01:37:57] [ INFO ] [TurnoService:57] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 01:37:57] [ INFO ] [TurnoService:66] Iniciando la búsqueda de todos los turnos
+[2022-12-07 01:38:50] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:38:50] [ INFO ] [OdontologoService:24] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:35] Se registró un nuevo turno con id=null
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:41] Se encontró un turno con id=1
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:48] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:57] Iniciando la búsqueda de un paciente con id=1
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:66] Iniciando la búsqueda de todos los turnos
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:41] Se encontró un turno con id=1
+[2022-12-07 01:38:50] [ INFO ] [TurnoService:83] Se eliminó al turno con id=1
+[2022-12-07 01:39:42] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:39:43] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:39:43] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:39:43] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:42:00] [ INFO ] [OdontologoService:24] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-07 01:42:00] [ INFO ] [OdontologoService:44] Iniciando la búsqueda de un odontólogo con nombre Andrés y apellido Galván
+[2022-12-07 01:42:00] [ INFO ] [OdontologoService:48] Iniciando la búsqueda de todos los odontólogos
+[2022-12-07 01:42:00] [ INFO ] [OdontologoService:52] Iniciando la actualización del odontólogo con id=null
+[2022-12-07 01:47:25] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:47:25] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:47:25] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:47:25] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:50:16] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:50:17] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:50:17] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:50:17] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:53:06] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:53:07] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:53:07] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:53:07] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:53:22] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:53:22] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:53:22] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:53:22] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:54:02] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:54:02] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:54:02] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:54:02] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:54:50] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:54:50] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:54:50] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:54:50] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:55:27] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:55:27] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:55:27] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:55:27] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:58:33] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:58:33] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:58:34] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:58:34] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:58:34] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=3
+[2022-12-07 01:59:20] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:59:20] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:59:20] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:59:20] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 01:59:43] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 01:59:43] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 01:59:43] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 01:59:43] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2
+[2022-12-07 02:00:03] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-07 02:00:03] [ INFO ] [PacienteService:43] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-07 02:00:03] [ INFO ] [PacienteService:47] Iniciando la búsqueda de todos los pacientes
+[2022-12-07 02:00:03] [ INFO ] [PacienteService:52] Se actualizó al paciente con id=2

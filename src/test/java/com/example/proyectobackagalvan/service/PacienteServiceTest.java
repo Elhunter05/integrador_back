@@ -2,6 +2,7 @@ package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -31,32 +32,34 @@ class PacienteServiceTest {
         Paciente pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
 
         assertEquals(1L, pacienteGuardado.getId());
+        assertEquals("Andrés", pacienteGuardado.getNombre());
+        assertEquals(pacienteAGuardar, pacienteGuardado);
     }
 
     @Test
     @Order(2)
-    public void buscarPorIdTest() {
+    public void buscarPacientePorIdTest() throws ResourceNotFoundException {
         Long idABuscar = 1L;
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(idABuscar);
+        assertNotNull(pacienteBuscado.get());
 
-        assertNotNull(pacienteBuscado);
     }
 
     @Test
     @Order(3)
-    public void buscarPorNombreYApellidoTest() {
-        String nombre = "Andrés";
-        String apellido = "Galván";
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorNombreYApellido(nombre, apellido);
+    public void buscarPorEmailTest() throws ResourceNotFoundException {
+        String email = "8il.andre@gmail.com";
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorEmail(email);
 
-        assertNotNull(pacienteBuscado);
+        assertNotNull(pacienteBuscado.get());
     }
 
     @Test
     @Order(4)
-    public void buscarPorEmailTest() {
-        String email = "8il.andre@gmail.com";
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorEmail(email);
+    public void buscarPorNombreYApellidoTest() {
+        String nombre = "Andrés";
+        String apellido = "Galván";
+        List<Paciente> pacienteBuscado = pacienteService.buscarPacientesPorNombreYApellido(nombre, apellido);
 
         assertNotNull(pacienteBuscado);
     }
@@ -72,7 +75,7 @@ class PacienteServiceTest {
 
     @Test
     @Order(6)
-    public void actualizarPacienteTest() {
+    public void actualizarPacienteTest() throws ResourceNotFoundException {
         Paciente pacienteAActualizar = new Paciente("Javi","Grande", "8888", "prueba@gmail.com", LocalDate.of(1950,11,30),
                 new Domicilio("Calle a",548,"Salta Capital","Salta"), new HashSet<>());
         pacienteService.actualizarPaciente(pacienteAActualizar);
@@ -83,7 +86,7 @@ class PacienteServiceTest {
 
     @Test
     @Order(7)
-    public void eliminarPacienteTest() {
+    public void eliminarPacienteTest() throws ResourceNotFoundException  {
         Long idAEliminar = 1L;
         pacienteService.eliminarPaciente(idAEliminar);
         Optional<Paciente> pacienteEliminado = pacienteService.buscarPaciente(idAEliminar);

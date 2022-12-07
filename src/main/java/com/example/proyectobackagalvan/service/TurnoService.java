@@ -1,10 +1,10 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.dto.TurnoDTO;
-import com.example.proyectobackagalvan.entity.Odontologo;
-import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.entity.Turno;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.TurnoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,45 +17,32 @@ public class TurnoService implements ITurnoService {
     private final Logger LOGGER = Logger.getLogger(TurnoService.class);
 
     @Autowired
+    ObjectMapper mapper;
+
+    @Autowired
     public TurnoService(TurnoRepository turnoRepository) {
         this.turnoRepository = turnoRepository;
     }
 
     private TurnoDTO turnoATurnoDTO(Turno turno) {
-        TurnoDTO respuesta = new TurnoDTO();
-        respuesta.setId(turno.getId());
-        respuesta.setOdontologoId(turno.getOdontologo().getId());
-        respuesta.setPacienteId(turno.getPaciente().getId());
-        respuesta.setFecha(turno.getFecha());
-        return respuesta;
+        return mapper.convertValue(turno, TurnoDTO.class);
     }
-
     private Turno turnoDTOaTurno(TurnoDTO turnoDTO) {
-        Turno turno = new Turno();
-
-        Paciente paciente = new Paciente();
-        paciente.setId(turnoDTO.getPacienteId());
-        Odontologo odontologo = new Odontologo();
-        odontologo.setId(turnoDTO.getOdontologoId());
-
-        turno.setId(turnoDTO.getId());
-        turno.setFecha(turnoDTO.getFecha());
-        turno.setPaciente(paciente);
-        turno.setOdontologo(odontologo);
-
-        return turno;
+        return mapper.convertValue(turnoDTO, Turno.class);
     }
 
-    public TurnoDTO guardarTurno (TurnoDTO turno) {
-        Turno turnoAGuardar = turnoDTOaTurno(turno);
-        Turno turnoGuardado = turnoRepository.save(turnoAGuardar);
-        LOGGER.info("Se ha registrado exitosamente un nuevo turno");
-        return turnoATurnoDTO(turnoGuardado);
+    public TurnoDTO guardarTurno (TurnoDTO turnoDTO) {
+        LOGGER.info("Se registró un nuevo turno con id="+turnoDTO.getId());
+        return turnoATurnoDTO(turnoRepository.save(turnoDTOaTurno(turnoDTO)));
     }
-    public Optional<TurnoDTO> buscarTurno(Long id) {
-        LOGGER.info("Iniciando la búsqueda de un turno con id="+id);
+    public Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException {
         Optional<Turno> turnoBuscado = turnoRepository.findById(id);
-        return turnoBuscado.map(this::turnoATurnoDTO);
+        if (turnoBuscado.isPresent()) {
+            LOGGER.info("Se encontró un turno con id="+id);
+            return Optional.of(turnoATurnoDTO(turnoBuscado.get()));
+        } else {
+            throw new ResourceNotFoundException("No se encontró ningún turno con id="+id);
+        }
     }
     public List<TurnoDTO> buscarPorOdontologo(Long odontologoId) {
         LOGGER.info("Iniciando la búsqueda de un odontólogo con id="+odontologoId);
@@ -84,13 +71,15 @@ public class TurnoService implements ITurnoService {
         }
         return respuesta;
     }
-    public void actualizarTurno(TurnoDTO turno) {
-        LOGGER.info("Iniciando la actualización del turno con id="+turno.getId());
-        Turno turnoAActualizar = turnoDTOaTurno(turno);
-        turnoRepository.save(turnoAActualizar);
+    public void actualizarTurno(TurnoDTO turnoDTO) {
+        LOGGER.info("Iniciando la actualización del turno con id="+turnoDTO.getId());
+        turnoRepository.save(turnoDTOaTurno(turnoDTO));
     }
-    public void eliminarTurno(Long id) {
-        LOGGER.info("Iniciando la eliminación del turno con id="+id);
+    public void eliminarTurno(Long id) throws ResourceNotFoundException {
+        if (buscarTurno(id).isEmpty()) {
+            throw new ResourceNotFoundException("No existe ningún turno con id="+id);
+        }
         turnoRepository.deleteById(id);
+        LOGGER.info("Se eliminó al turno con id="+id);
     }
 }
