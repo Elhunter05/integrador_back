@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,12 +27,11 @@ class PacienteServiceTest {
     @Order(1)
     public void guardarPacienteTest() {
         Paciente pacienteAGuardar = new Paciente("Andrés","Galván", "4900", "8il.andre@gmail.com", LocalDate.of(2022,12,12),
-                new Domicilio("Calle a",548,"Salta Capital","Salta"), new HashSet<>());
+                new Domicilio("Calle a",548,"Salta Capital","Salta"));
         Paciente pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
 
         assertEquals(1L, pacienteGuardado.getId());
         assertEquals("Andrés", pacienteGuardado.getNombre());
-        assertEquals(pacienteAGuardar, pacienteGuardado);
     }
 
     @Test
@@ -41,8 +39,8 @@ class PacienteServiceTest {
     public void buscarPacientePorIdTest() throws ResourceNotFoundException {
         Long idABuscar = 1L;
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(idABuscar);
-        assertNotNull(pacienteBuscado.get());
 
+        assertNotNull(pacienteBuscado.get());
     }
 
     @Test
@@ -76,12 +74,14 @@ class PacienteServiceTest {
     @Test
     @Order(6)
     public void actualizarPacienteTest() throws ResourceNotFoundException {
-        Paciente pacienteAActualizar = new Paciente("Javi","Grande", "8888", "prueba@gmail.com", LocalDate.of(1950,11,30),
-                new Domicilio("Calle a",548,"Salta Capital","Salta"), new HashSet<>());
+        Paciente pacienteAActualizar = new Paciente(1L, "Javi","Grande", "8888", "prueba@gmail.com", LocalDate.of(1950,11,30),
+                new Domicilio("Calle a",548,"Salta Capital","Salta"));
+        pacienteService.guardarPaciente(pacienteAActualizar);
         pacienteService.actualizarPaciente(pacienteAActualizar);
         Optional<Paciente> pacienteActualizado = pacienteService.buscarPaciente(pacienteAActualizar.getId());
 
         assertEquals("Javi", pacienteActualizado.get().getNombre());
+        assertEquals(1, pacienteActualizado.get().getId());
     }
 
     @Test

@@ -9,7 +9,6 @@ import com.example.proyectobackagalvan.service.OdontologoService;
 import com.example.proyectobackagalvan.service.PacienteService;
 import com.example.proyectobackagalvan.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +47,7 @@ public class TurnoController {
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<TurnoDTO> buscarTurno(@PathVariable("id") Long id) throws ResourceNotFoundException {
+    public ResponseEntity<TurnoDTO> buscarTurno(@PathVariable("id") Long id) throws ResourceNotFoundException, BadRequestException {
         return ResponseEntity.ok(turnoService.buscarTurno(id).get());
     }
 
@@ -71,25 +70,13 @@ public class TurnoController {
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarTurno(@RequestBody TurnoDTO turno) throws ResourceNotFoundException {
-        Optional<TurnoDTO> turnoBuscado = turnoService.buscarTurno(turno.getId());
-        ResponseEntity<String> response;
-
-        if (turnoBuscado.isPresent()) {
-            if (pacienteService.buscarPaciente(turno.getPacienteId()).isPresent() && odontologoService.buscarOdontologo(turno.getOdontologoId()).isPresent()) {
-                turnoService.actualizarTurno(turno);
-                response = ResponseEntity.ok("Se actualizó el turno con id=" + turno.getId());
-            } else {
-                response = ResponseEntity.badRequest().body("Error al actualizar, verificar si el odontólogo y/o el paciente existen en la base de datos");
-            }
-        } else {
-            response = ResponseEntity.badRequest().body("No se puede actualizar un turno que no exista en la base de datos");
-        }
-        return response;
+    public ResponseEntity<String> actualizarTurno(@RequestBody TurnoDTO turno) throws ResourceNotFoundException, BadRequestException {
+        turnoService.actualizarTurno(turno);
+        return ResponseEntity.ok("Se actualizó el turno con id=" + turno.getId());
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException {
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException, BadRequestException {
         turnoService.eliminarTurno(id);
         return  ResponseEntity.ok().body("El turno se ha eliminado");
     }

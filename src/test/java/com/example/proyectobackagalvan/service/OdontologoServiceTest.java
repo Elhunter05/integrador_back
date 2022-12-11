@@ -9,7 +9,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,10 +24,11 @@ class OdontologoServiceTest {
     @Test
     @Order(1)
     public void guardarOdontologoTest() {
-        Odontologo odontologoAGuardar = new Odontologo(12345, "Andrés", "Galván", new HashSet<>());
+        Odontologo odontologoAGuardar = new Odontologo(12345, "Andrés", "Galván");
         Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologoAGuardar);
 
         assertEquals(1L, odontologoGuardado.getId());
+        assertEquals("Andrés", odontologoGuardado.getNombre());
     }
 
     @Test
@@ -37,7 +37,7 @@ class OdontologoServiceTest {
         Long idABuscar = 1L;
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(idABuscar);
 
-        assertNotNull(odontologoBuscado);
+        assertNotNull(odontologoBuscado.get());
     }
 
     @Test
@@ -71,7 +71,8 @@ class OdontologoServiceTest {
     @Test
     @Order(6)
     public void actualizarOdontologoTest() throws ResourceNotFoundException  {
-        Odontologo odontologoAActualizar = new Odontologo(888, "Javi", "Grande", new HashSet<>());
+        Odontologo odontologoAActualizar = new Odontologo(888, "Javi", "Grande");
+        odontologoService.guardarOdontologo(odontologoAActualizar);
         odontologoService.actualizarOdontologo(odontologoAActualizar);
         Optional<Odontologo> odontologoActualizado = odontologoService.buscarOdontologo(odontologoAActualizar.getId());
 
@@ -83,8 +84,12 @@ class OdontologoServiceTest {
     public void eliminarOdontologoTest() throws ResourceNotFoundException  {
         Long idAEliminar = 1L;
         odontologoService.eliminarOdontologo(idAEliminar);
-        Optional<Odontologo> odontologoEliminado = odontologoService.buscarOdontologo(idAEliminar);
 
-        assertFalse(odontologoEliminado.isPresent());
+        ResourceNotFoundException thrown = assertThrows(
+                ResourceNotFoundException.class,
+                () -> odontologoService.buscarOdontologo(idAEliminar)
+        );
+
+        assertTrue(thrown.getMessage().contains("No se encontró ningún odontólogo con id="+idAEliminar));
     }
 }

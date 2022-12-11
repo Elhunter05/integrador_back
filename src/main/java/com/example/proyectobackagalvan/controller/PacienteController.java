@@ -52,9 +52,6 @@ public class PacienteController {
 
     @PutMapping
     public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente) throws ResourceNotFoundException {
-        if (pacienteService.buscarPaciente(paciente.getId()).isEmpty()) {
-            throw new ResourceNotFoundException("No se encontró ningún paciente con id="+paciente.getId());
-        }
         pacienteService.actualizarPaciente(paciente);
         return ResponseEntity.ok("Se actualizó al paciente con id="+paciente.getId());
     }

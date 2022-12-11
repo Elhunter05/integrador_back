@@ -13,6 +13,6 @@ public interface IPacienteService {
     Optional<Paciente> buscarPorEmail(String email) throws ResourceNotFoundException;
     List<Paciente> buscarPacientesPorNombreYApellido(String nombre, String apellido);
     List<Paciente> mostrarPacientes();
-    void actualizarPaciente(Paciente paciente);
+    void actualizarPaciente(Paciente paciente) throws ResourceNotFoundException;
     void eliminarPaciente(Long id) throws ResourceNotFoundException;
 }

@@ -1,7 +1,10 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.dto.TurnoDTO;
+import com.example.proyectobackagalvan.entity.Odontologo;
+import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.entity.Turno;
+import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.TurnoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,32 +17,68 @@ import java.util.*;
 @Service
 public class TurnoService implements ITurnoService {
     private final TurnoRepository turnoRepository;
+    private final PacienteService pacienteService;
+    private final OdontologoService odontologoService;
     private final Logger LOGGER = Logger.getLogger(TurnoService.class);
+    private final ObjectMapper mapper;
 
     @Autowired
-    ObjectMapper mapper;
-
-    @Autowired
-    public TurnoService(TurnoRepository turnoRepository) {
+    public TurnoService(TurnoRepository turnoRepository, PacienteService pacienteService, OdontologoService odontologoService, ObjectMapper mapper) {
         this.turnoRepository = turnoRepository;
+        this.pacienteService = pacienteService;
+        this.odontologoService = odontologoService;
+        this.mapper = mapper;
     }
 
-    private TurnoDTO turnoATurnoDTO(Turno turno) {
-        return mapper.convertValue(turno, TurnoDTO.class);
+    private TurnoDTO turnoATurnoDTO(Turno turno){
+        //convertir ese turno en un turno DTO
+        TurnoDTO respuesta=new TurnoDTO();
+        respuesta.setId(turno.getId());
+        respuesta.setFecha(turno.getFecha());
+        respuesta.setOdontologoId(turno.getOdontologo().getId());
+        respuesta.setPacienteId(turno.getPaciente().getId());
+        return respuesta;
     }
-    private Turno turnoDTOaTurno(TurnoDTO turnoDTO) {
-        return mapper.convertValue(turnoDTO, Turno.class);
+    private Turno turnoDTOaTurno(TurnoDTO turnoDTO){
+        Turno turno= new Turno();
+        Paciente paciente= new Paciente();
+        Odontologo odontologo= new Odontologo();
+        //cargar los elementos
+        paciente.setId(turnoDTO.getPacienteId());
+        odontologo.setId(turnoDTO.getOdontologoId());
+        turno.setId(turnoDTO.getId());
+        turno.setFecha(turnoDTO.getFecha());
+        //asociar cada elemento
+        turno.setPaciente(paciente);
+        turno.setOdontologo(odontologo);
+        //salida
+        return turno;
     }
+
+    // Al hacerlo con mapper los POST de Postman retornan null en los id de paciente y odontólogo, no está mappeando bien los objetos
+//    private TurnoDTO turnoATurnoDTO(Turno turno) {
+//        return mapper.convertValue(turno, TurnoDTO.class);
+//    }
+//    private Turno turnoDTOaTurno(TurnoDTO turnoDTO) {
+//        return mapper.convertValue(turnoDTO, Turno.class);
+//    }
 
     public TurnoDTO guardarTurno (TurnoDTO turnoDTO) {
         LOGGER.info("Se registró un nuevo turno con id="+turnoDTO.getId());
         return turnoATurnoDTO(turnoRepository.save(turnoDTOaTurno(turnoDTO)));
     }
-    public Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException {
+    public Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException, BadRequestException {
         Optional<Turno> turnoBuscado = turnoRepository.findById(id);
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoBuscado.get().getId());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoBuscado.get().getId());
+
         if (turnoBuscado.isPresent()) {
-            LOGGER.info("Se encontró un turno con id="+id);
-            return Optional.of(turnoATurnoDTO(turnoBuscado.get()));
+            if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
+                LOGGER.info("Se encontró un turno con id="+id);
+                return Optional.of(turnoATurnoDTO(turnoBuscado.get()));
+            } else {
+                throw new BadRequestException("Error al actualizar, verifique si el odontólogo y/o paciente asociado existe");
+            }
         } else {
             throw new ResourceNotFoundException("No se encontró ningún turno con id="+id);
         }
@@ -71,14 +110,13 @@ public class TurnoService implements ITurnoService {
         }
         return respuesta;
     }
-    public void actualizarTurno(TurnoDTO turnoDTO) {
-        LOGGER.info("Iniciando la actualización del turno con id="+turnoDTO.getId());
+    public void actualizarTurno(TurnoDTO turnoDTO) throws ResourceNotFoundException, BadRequestException {
+        buscarTurno(turnoDTO.getId());
         turnoRepository.save(turnoDTOaTurno(turnoDTO));
+        LOGGER.info("Iniciando la actualización del turno con id="+turnoDTO.getId());
     }
-    public void eliminarTurno(Long id) throws ResourceNotFoundException {
-        if (buscarTurno(id).isEmpty()) {
-            throw new ResourceNotFoundException("No existe ningún turno con id="+id);
-        }
+    public void eliminarTurno(Long id) throws ResourceNotFoundException, BadRequestException {
+        buscarTurno(id);
         turnoRepository.deleteById(id);
         LOGGER.info("Se eliminó al turno con id="+id);
     }

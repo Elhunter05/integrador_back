@@ -12,6 +12,6 @@ public interface IOdontologoService {
     Optional<Odontologo> buscarPorMatricula(Integer matricula) throws ResourceNotFoundException;
     List<Odontologo> buscarOdontologosPorNombreYApellido(String nombre, String apellido);
     List<Odontologo> mostrarOdontologos();
-    void actualizarOdontologo(Odontologo odontologo);
+    void actualizarOdontologo(Odontologo odontologo) throws ResourceNotFoundException;
     void eliminarOdontologo(Long id) throws ResourceNotFoundException;
 }

@@ -2,6 +2,7 @@ package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.OdontologoRepository;
 import org.apache.log4j.Logger;
@@ -48,14 +49,13 @@ public class OdontologoService implements IOdontologoService {
         LOGGER.info("Iniciando la búsqueda de todos los odontólogos");
         return odontologoRepository.findAll();
     }
-    public void actualizarOdontologo(Odontologo odontologo) {
-        LOGGER.info("Iniciando la actualización del odontólogo con id="+odontologo.getId());
+    public void actualizarOdontologo(Odontologo odontologo) throws ResourceNotFoundException {
+        buscarOdontologo(odontologo.getId());
         odontologoRepository.save(odontologo);
+        LOGGER.info("Iniciando la actualización del odontólogo con id="+odontologo.getId());
     }
     public void eliminarOdontologo(Long id) throws ResourceNotFoundException {
-        if (buscarOdontologo(id).isEmpty()) {
-            throw new ResourceNotFoundException("No existe un odontólogo con id="+id);
-        }
+        buscarOdontologo(id);
         odontologoRepository.deleteById(id);
         LOGGER.info("Iniciando la eliminación del odontólogo con id="+id);
     }

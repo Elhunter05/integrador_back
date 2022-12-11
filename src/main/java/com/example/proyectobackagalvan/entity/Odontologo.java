@@ -29,11 +29,17 @@ public class Odontologo {
     public Odontologo() {
     }
 
-    public Odontologo(Integer matricula, String nombre, String apellido, Set<Turno> turnoSet) {
+    public Odontologo(Integer matricula, String nombre, String apellido) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.turnoSet = turnoSet;
+    }
+
+    public Odontologo(Long id, Integer matricula, String nombre, String apellido) {
+        this.id = id;
+        this.matricula = matricula;
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     @Override

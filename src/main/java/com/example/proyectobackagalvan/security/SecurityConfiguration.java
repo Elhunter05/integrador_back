@@ -26,9 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 // Esto con React sería distinto ya que hay un solo HTML. Dijeron algo en clase sobre eso, por el minuto 20
-                .antMatchers("/get_pacientes.html", "/get_odontologos.html")
+                .antMatchers("/get_paciente.html", "/get_odontologo.html")
                 .hasAnyRole("USER", "ADMIN")
-                .antMatchers("/get_turnos.html")
+                .antMatchers("/get_turno.html")
                 .hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()

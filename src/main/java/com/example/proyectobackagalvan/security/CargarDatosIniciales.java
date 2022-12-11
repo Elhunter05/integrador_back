@@ -23,10 +23,10 @@ public class CargarDatosIniciales implements ApplicationRunner {
         //cargar un usuario para probar
         BCryptPasswordEncoder cifrador = new BCryptPasswordEncoder();
         String passCifrada = cifrador.encode("miPass");
-        Usuario usuarioUser = new Usuario("Andrés", "Galván", "8il.andre@gmail.com", passCifrada, UsuarioRole.ROLE_USER);
+        Usuario usuarioUser = new Usuario("Andrés", "agalvan", "user@gmail.com", passCifrada, UsuarioRole.ROLE_USER);
         usuarioRepository.save(usuarioUser);
 
-        Usuario usuarioAdmin = new Usuario("Javi", "Grande", "prueba@gmail.com", passCifrada, UsuarioRole.ROLE_ADMIN);
+        Usuario usuarioAdmin = new Usuario("Javi", "javigrande", "admin@gmail.com", passCifrada, UsuarioRole.ROLE_ADMIN);
         usuarioRepository.save(usuarioAdmin);
     }
 }

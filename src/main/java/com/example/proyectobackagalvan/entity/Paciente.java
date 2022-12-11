@@ -33,14 +33,23 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String nombre, String apellido, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio, Set<Turno> turnoSet) {
+    public Paciente(String nombre, String apellido, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.fechaIngreso = fechaIngreso;
         this.domicilio = domicilio;
-        this.turnoSet = turnoSet;
+    }
+
+    public Paciente(Long id, String nombre, String apellido, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.fechaIngreso = fechaIngreso;
+        this.domicilio = domicilio;
     }
 
     @Override

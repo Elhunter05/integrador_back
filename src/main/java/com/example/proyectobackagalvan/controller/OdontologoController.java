@@ -50,9 +50,6 @@ public class OdontologoController {
 
     @PutMapping
     public ResponseEntity<String> actualizarOdontologo(@RequestBody Odontologo odontologo) throws ResourceNotFoundException {
-        if (odontologoService.buscarOdontologo(odontologo.getId()).isEmpty()) {
-            throw new ResourceNotFoundException("No se encontró ningún odontólogo con id="+odontologo.getId());
-        }
         odontologoService.actualizarOdontologo(odontologo);
         return ResponseEntity.ok("Se actualizó al odontólogo con id="+odontologo.getId());
     }

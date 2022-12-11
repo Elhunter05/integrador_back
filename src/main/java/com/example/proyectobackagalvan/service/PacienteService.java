@@ -47,7 +47,8 @@ public class PacienteService implements IPacienteService {
         LOGGER.info("Iniciando la búsqueda de todos los pacientes");
         return pacienteRepository.findAll();
     }
-    public void actualizarPaciente(Paciente paciente) {
+    public void actualizarPaciente(Paciente paciente) throws ResourceNotFoundException {
+        buscarPaciente(paciente.getId());
         pacienteRepository.save(paciente);
         LOGGER.info("Se actualizó al paciente con id="+paciente.getId());
     }
