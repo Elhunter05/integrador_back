@@ -27,7 +27,7 @@ public class Paciente {
     private Domicilio domicilio;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     private Set<Turno> turnoSet = new HashSet<>();
 
     public Paciente() {
