@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
-    const formulario = document.querySelector('#update_turno_form');
-    formulario.addEventListener('submit', (e) => {
+    const form = document.querySelector('#update_turno_form');
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = {
             id: document.querySelector('#turno_id').value,

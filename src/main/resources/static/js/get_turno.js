@@ -35,7 +35,6 @@ window.addEventListener('load', function () {
         };
     })
     })
-
     (function(){
       let pathname = window.location.pathname;
       if (pathname == "/get_turno.html") {
