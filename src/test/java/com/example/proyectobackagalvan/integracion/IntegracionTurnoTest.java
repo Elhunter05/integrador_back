@@ -4,6 +4,8 @@ import com.example.proyectobackagalvan.dto.TurnoDTO;
 import com.example.proyectobackagalvan.entity.Domicilio;
 import com.example.proyectobackagalvan.entity.Odontologo;
 import com.example.proyectobackagalvan.entity.Paciente;
+import com.example.proyectobackagalvan.exception.BadRequestException;
+import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.service.OdontologoService;
 import com.example.proyectobackagalvan.service.PacienteService;
 import com.example.proyectobackagalvan.service.TurnoService;
@@ -37,7 +39,7 @@ public class IntegracionTurnoTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private void cargarTurnoinicial() {
+    private void cargarTurnoinicial() throws ResourceNotFoundException, BadRequestException {
         Domicilio domicilio = new Domicilio("Calle a",548,"Salta Capital","Salta");
         Paciente pacienteAGuardar = new Paciente("Javi","Grande", "8888", "prueba@gmail.com", LocalDate.of(1950,11,30), domicilio);
         Paciente pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);

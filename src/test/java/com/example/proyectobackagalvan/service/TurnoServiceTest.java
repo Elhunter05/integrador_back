@@ -33,7 +33,7 @@ class TurnoServiceTest {
 
     @Test
     @Order(1)
-    public void guardarTurnoTest() {
+    public void guardarTurnoTest() throws BadRequestException, ResourceNotFoundException {
         Paciente pacienteAGuardar = pacienteService.guardarPaciente(new Paciente("Andrés","Galván", "4900", "8il.andre@gmail.com", LocalDate.of(2022,12,12),
                 new Domicilio("Calle a",548,"Salta Capital","Salta")));
         Odontologo odontologoAGuardar = odontologoService.guardarOdontologo(new Odontologo(12345, "Andrés", "Galván"));

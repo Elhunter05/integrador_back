@@ -2013,3 +2013,194 @@
 [2022-12-12 00:04:56] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
 [2022-12-12 00:04:57] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
 [2022-12-12 00:04:59] [ INFO ] [TurnoService:106] Iniciando la búsqueda de todos los turnos
+[2022-12-12 00:36:17] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 00:36:49] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:29:32] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:29:32] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:29:32] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:29:32] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:29:32] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:29:32] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:45] Iniciando la búsqueda de un odontólogo con nombre Andrés y apellido Galván
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:41] Iniciando la búsqueda de un odontólogo con matrícula=12345
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=2
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:55] Iniciando la actualización del odontólogo con id=2
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=2
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:09] [ INFO ] [OdontologoService:60] Iniciando la eliminación del odontólogo con id=1
+[2022-12-12 01:31:09] [ WARN ] [OdontologoService:29] No se encontró ningún odontólogo con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:41] Iniciando la búsqueda de un paciente con email=8il.andre@gmail.com
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:45] Iniciando la búsqueda de pacientes con nombre Andrés y apellido Galván
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:55] Se actualizó al paciente con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:19] [ INFO ] [PacienteService:60] Se eliminó al paciente con id=1
+[2022-12-12 01:31:19] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:84] Se encontró un turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:96] Iniciando la búsqueda de un odontólogo con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:105] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=2
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=2
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:84] Se encontró un turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:125] Iniciando la actualización del turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:84] Se encontró un turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:84] Se encontró un turno con id=1
+[2022-12-12 01:31:29] [ INFO ] [TurnoService:130] Se eliminó al turno con id=1
+[2022-12-12 01:31:29] [ WARN ] [TurnoService:91] No se encontró ningún turno con id=1
+[2022-12-12 01:44:38] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:45:01] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:45:07] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:45:08] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:45:09] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:46:15] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:46:18] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:46:20] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:46:22] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:46:26] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:46:28] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:46:30] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:46:36] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:46:36] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:46:36] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:46:36] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:46:36] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:46:36] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:46:37] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:47:12] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:47:19] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:47:20] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:47:45] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:47:46] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:47:48] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:47:53] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:47:53] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:47:53] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:47:53] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:47:53] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:47:53] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:47:55] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:48:21] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:48:24] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:48:42] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:49:04] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:49:05] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:49:09] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:49:10] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:49:11] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:49:19] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:49:20] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:49:22] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:49:42] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:49:44] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:49:45] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:49:46] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:49:48] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:49:56] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:49:56] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:49:56] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:49:56] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:49:56] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:49:56] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:49:58] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:52:32] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 01:52:47] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 01:52:50] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:52:56] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:52:56] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:52:56] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:52:56] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:52:56] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:52:56] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 01:52:57] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:22] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=2
+[2022-12-12 01:54:22] [ ERROR] [GlobalExceptions:14] Error, el sistema detectó un problema, se registró el siguiente mensaje: No se encontró ningún paciente con id=2
+[2022-12-12 01:54:23] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:25] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=2
+[2022-12-12 01:54:25] [ ERROR] [GlobalExceptions:14] Error, el sistema detectó un problema, se registró el siguiente mensaje: No se encontró ningún paciente con id=2
+[2022-12-12 01:54:26] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:28] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:54:28] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:54:28] [ INFO ] [TurnoService:84] Se encontró un turno con id=1
+[2022-12-12 01:54:28] [ INFO ] [TurnoService:130] Se eliminó al turno con id=1
+[2022-12-12 01:54:29] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:34] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=2
+[2022-12-12 01:54:34] [ ERROR] [GlobalExceptions:14] Error, el sistema detectó un problema, se registró el siguiente mensaje: No se encontró ningún paciente con id=2
+[2022-12-12 01:54:35] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:37] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=2
+[2022-12-12 01:54:37] [ ERROR] [GlobalExceptions:14] Error, el sistema detectó un problema, se registró el siguiente mensaje: No se encontró ningún paciente con id=2
+[2022-12-12 01:54:38] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:45] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:54:47] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:54:50] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:54:50] [ INFO ] [OdontologoService:60] Iniciando la eliminación del odontólogo con id=1
+[2022-12-12 01:54:51] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:54:53] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 01:54:53] [ INFO ] [PacienteService:60] Se eliminó al paciente con id=1
+[2022-12-12 01:54:55] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 01:54:56] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 01:54:57] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 01:54:58] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 02:06:05] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 02:06:20] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 02:06:21] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 02:06:56] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 02:06:57] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 02:06:58] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 02:07:17] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 02:07:17] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 02:07:17] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 02:07:17] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 02:07:17] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 02:07:17] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 02:07:18] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 02:07:42] [ WARN ] [PacienteService:29] No se encontró ningún paciente con id=2
+[2022-12-12 02:07:42] [ ERROR] [GlobalExceptions:14] Error, el sistema detectó un problema, se registró el siguiente mensaje: No se encontró ningún paciente con id=2
+[2022-12-12 02:09:35] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 02:09:38] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 02:09:39] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 02:09:40] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 02:58:13] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 02:58:36] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 02:58:38] [ INFO ] [PacienteService:49] Iniciando la búsqueda de todos los pacientes
+[2022-12-12 02:58:39] [ INFO ] [OdontologoService:49] Iniciando la búsqueda de todos los odontólogos
+[2022-12-12 02:58:40] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:00:29] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 03:00:29] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 03:00:29] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 03:00:31] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:00:49] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:01:40] [ INFO ] [OdontologoService:23] Se ha registrado exitosamente un nuevo odontólogo
+[2022-12-12 03:01:54] [ INFO ] [PacienteService:23] Se registró un nuevo paciente
+[2022-12-12 03:02:00] [ INFO ] [PacienteService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 03:02:00] [ INFO ] [OdontologoService:32] Iniciando la búsqueda de un paciente con id=1
+[2022-12-12 03:02:00] [ INFO ] [TurnoService:71] Se registró un nuevo turno con id=null
+[2022-12-12 03:02:02] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:09:29] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:10:25] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos
+[2022-12-12 03:10:27] [ INFO ] [TurnoService:114] Iniciando la búsqueda de todos los turnos

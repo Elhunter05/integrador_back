@@ -1,6 +1,5 @@
 package com.example.proyectobackagalvan.security;
 
-import com.example.proyectobackagalvan.entity.UsuarioRole;
 import com.example.proyectobackagalvan.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

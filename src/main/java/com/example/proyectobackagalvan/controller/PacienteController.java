@@ -1,8 +1,6 @@
 package com.example.proyectobackagalvan.controller;
 
-import com.example.proyectobackagalvan.dto.TurnoDTO;
 import com.example.proyectobackagalvan.entity.Paciente;
-import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;

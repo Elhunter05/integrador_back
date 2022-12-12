@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ITurnoService {
-    TurnoDTO guardarTurno (TurnoDTO turno);
+    TurnoDTO guardarTurno (TurnoDTO turno) throws ResourceNotFoundException, BadRequestException;
     Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException, BadRequestException;
     List<TurnoDTO> buscarPorOdontologo(Long odontologoId);
     List<TurnoDTO> buscarPorPaciente(Long pacienteId);

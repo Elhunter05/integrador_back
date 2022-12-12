@@ -1,8 +1,6 @@
 package com.example.proyectobackagalvan.controller;
 
 import com.example.proyectobackagalvan.dto.TurnoDTO;
-import com.example.proyectobackagalvan.entity.Odontologo;
-import com.example.proyectobackagalvan.entity.Paciente;
 import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.service.OdontologoService;
@@ -31,18 +29,7 @@ public class TurnoController {
 
     @PostMapping
     public ResponseEntity<TurnoDTO> registrarTurno(@RequestBody TurnoDTO turno) throws ResourceNotFoundException, BadRequestException {
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turno.getPacienteId());
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turno.getOdontologoId());
-        ResponseEntity<TurnoDTO> response;
-
-        if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
-            turno.setPacienteId(pacienteBuscado.get().getId());
-            turno.setOdontologoId(odontologoBuscado.get().getId());
-            response = ResponseEntity.ok(turnoService.guardarTurno(turno));
-        } else {
-            throw new BadRequestException("Por favor revise que los datos del paciente y odontólogo sean correctos");
-        }
-        return response;
+        return ResponseEntity.ok(turnoService.guardarTurno(turno));
     }
 
     @GetMapping("/buscar/{id}")

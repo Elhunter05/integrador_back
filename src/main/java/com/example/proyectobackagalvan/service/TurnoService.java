@@ -63,9 +63,17 @@ public class TurnoService implements ITurnoService {
 //        return mapper.convertValue(turnoDTO, Turno.class);
 //    }
 
-    public TurnoDTO guardarTurno (TurnoDTO turnoDTO) {
-        LOGGER.info("Se registró un nuevo turno con id="+turnoDTO.getId());
-        return turnoATurnoDTO(turnoRepository.save(turnoDTOaTurno(turnoDTO)));
+    public TurnoDTO guardarTurno (TurnoDTO turnoDTO) throws ResourceNotFoundException, BadRequestException {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoDTO.getPacienteId());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoDTO.getOdontologoId());
+
+        if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
+            LOGGER.info("Se registró un nuevo turno con id="+turnoDTO.getId());
+            return turnoATurnoDTO(turnoRepository.save(turnoDTOaTurno(turnoDTO)));
+        } else {
+            LOGGER.warn("Por favor revise que los datos del paciente y odontólogo sean correctos");
+            throw new BadRequestException("Por favor revise que los datos del paciente y odontólogo sean correctos");
+        }
     }
     public Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException, BadRequestException {
         Optional<Turno> turnoBuscado = turnoRepository.findById(id);

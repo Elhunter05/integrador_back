@@ -1,7 +1,6 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Paciente;
-import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 
 import java.util.List;
