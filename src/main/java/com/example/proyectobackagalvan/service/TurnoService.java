@@ -69,17 +69,18 @@ public class TurnoService implements ITurnoService {
     }
     public Optional<TurnoDTO> buscarTurno(Long id) throws ResourceNotFoundException, BadRequestException {
         Optional<Turno> turnoBuscado = turnoRepository.findById(id);
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoBuscado.get().getId());
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoBuscado.get().getId());
-
         if (turnoBuscado.isPresent()) {
+            Optional<Paciente> pacienteBuscado = pacienteService.buscarPaciente(turnoBuscado.get().getId());
+            Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologo(turnoBuscado.get().getId());
             if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
                 LOGGER.info("Se encontró un turno con id="+id);
                 return Optional.of(turnoATurnoDTO(turnoBuscado.get()));
             } else {
+                LOGGER.warn("Error al actualizar, verifique si el odontólogo y/o paciente asociado existe");
                 throw new BadRequestException("Error al actualizar, verifique si el odontólogo y/o paciente asociado existe");
             }
         } else {
+            LOGGER.warn("No se encontró ningún turno con id="+id);
             throw new ResourceNotFoundException("No se encontró ningún turno con id="+id);
         }
     }

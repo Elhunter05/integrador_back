@@ -1,8 +1,6 @@
 package com.example.proyectobackagalvan.service;
 
 import com.example.proyectobackagalvan.entity.Odontologo;
-import com.example.proyectobackagalvan.entity.Paciente;
-import com.example.proyectobackagalvan.exception.BadRequestException;
 import com.example.proyectobackagalvan.exception.ResourceNotFoundException;
 import com.example.proyectobackagalvan.repository.OdontologoRepository;
 import org.apache.log4j.Logger;
@@ -28,6 +26,7 @@ public class OdontologoService implements IOdontologoService {
     public Optional<Odontologo> buscarOdontologo(Long id) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado = odontologoRepository.findById(id);
         if (odontologoBuscado.isEmpty()) {
+            LOGGER.warn("No se encontró ningún odontólogo con id="+id);
             throw new ResourceNotFoundException("No se encontró ningún odontólogo con id="+id);
         }
         LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
@@ -36,6 +35,7 @@ public class OdontologoService implements IOdontologoService {
     public Optional<Odontologo> buscarPorMatricula(Integer matricula) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado = odontologoRepository.findByMatricula(matricula);
         if (odontologoBuscado.isEmpty()) {
+            LOGGER.warn("No se encontró ningún odontólogo con matrícula="+matricula);
             throw new ResourceNotFoundException("");
         }
         LOGGER.info("Iniciando la búsqueda de un odontólogo con matrícula="+matricula);

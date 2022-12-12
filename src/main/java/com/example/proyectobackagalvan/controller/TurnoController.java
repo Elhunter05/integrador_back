@@ -17,7 +17,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/turnos")
-@CrossOrigin("*")
 public class TurnoController {
     private final TurnoService turnoService;
     private final PacienteService pacienteService;

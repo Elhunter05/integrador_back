@@ -108,14 +108,12 @@ class TurnoServiceTest {
     public void eliminarTurnoTest() throws ResourceNotFoundException, BadRequestException {
         Long idAEliminar = 1L;
         turnoService.eliminarTurno(idAEliminar);
-        Optional<TurnoDTO> turnoEliminado = turnoService.buscarTurno(idAEliminar);
-        assertFalse(turnoEliminado.isPresent());
 
-//        ResourceNotFoundException thrown = assertThrows(
-//                ResourceNotFoundException.class,
-//                () -> turnoService.buscarTurno(idAEliminar).isPresent()
-//        );
-//
-//        assertTrue(thrown.getMessage().contains("No se encontró ningún turno con id="+idAEliminar));
+        ResourceNotFoundException thrown = assertThrows(
+                ResourceNotFoundException.class,
+                () -> turnoService.buscarTurno(idAEliminar).isPresent()
+        );
+
+        assertTrue(thrown.getMessage().contains("No se encontró ningún turno con id="+idAEliminar));
     }
 }

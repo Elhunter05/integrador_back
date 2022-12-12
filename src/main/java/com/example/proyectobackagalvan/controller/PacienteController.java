@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/pacientes")
-@CrossOrigin("*")
 public class PacienteController {
     private final PacienteService pacienteService;
 
@@ -28,7 +27,7 @@ public class PacienteController {
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
 
-    @GetMapping("/buscar-id/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<Paciente> buscarPacientePorId(@PathVariable("id") Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(pacienteService.buscarPaciente(id).get());
     }

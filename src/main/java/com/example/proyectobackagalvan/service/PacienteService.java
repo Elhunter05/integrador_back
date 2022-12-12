@@ -26,6 +26,7 @@ public class PacienteService implements IPacienteService {
     public Optional<Paciente> buscarPaciente(Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado = pacienteRepository.findById(id);
         if (pacienteBuscado.isEmpty()) {
+            LOGGER.warn("No se encontró ningún paciente con id="+id);
             throw new ResourceNotFoundException("No se encontró ningún paciente con id="+id);
         }
         LOGGER.info("Iniciando la búsqueda de un paciente con id="+id);
@@ -34,7 +35,8 @@ public class PacienteService implements IPacienteService {
     public Optional<Paciente> buscarPorEmail(String email) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado = pacienteRepository.findByEmail(email);
         if (pacienteBuscado.isEmpty()) {
-            throw new ResourceNotFoundException("");
+            LOGGER.warn("No se encontró ningún paciente con email="+email);
+            throw new ResourceNotFoundException("No se encontró ningún paciente con email="+email);
         }
         LOGGER.info("Iniciando la búsqueda de un paciente con email="+email);
         return pacienteBuscado;

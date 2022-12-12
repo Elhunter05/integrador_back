@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/odontologos")
-@CrossOrigin("*")
 public class OdontologoController {
     private final OdontologoService odontologoService;
 
